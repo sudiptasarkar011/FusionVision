@@ -1,0 +1,73 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color: #ffffff;
+}
+
+.header {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #000000, #0055ff);
+    color: #ffffff;
+}
+
+.header .logo img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.features {
+    text-align: center;
+    margin: 30px 20px;
+    background: #0a0a0a;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #00bfff;
+}
+
+.call-to-action {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.scan-button {
+    background: #00bfff;
+    color: #000000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.scan-button:hover {
+    background: #0055ff;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background: #1a1a1a;
+    color: #ffffff;
+    font-size: 0.9em;
+}
