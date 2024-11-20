@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Object Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- COCO-SSD Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Camera Preview with Object Detection</h1>
+    </header>
+    <main>
+        <div class="camera-container">
+            <!-- Live camera feed -->
+            <video id="cameraPreview" autoplay></video>
+        </div>
+        <div class="controls">
+            <button class="scan-button" onclick="captureImage()">Capture Image</button>
+        </div>
+        <div class="captured-image-container">
+            <!-- Captured image and result -->
+            <canvas id="capturedCanvas"></canvas>
+        </div>
+        <div class="controls">
+            <button class="scan-button" onclick="processCapturedImage()">Scan Image</button>
+            <button class="scan-button" onclick="stopCamera()">Stop Camera</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fusion Vision. All rights reserved.</p>
+    </footer>
+    <script src="object-detection.js"></script>
+</body>
+</html>

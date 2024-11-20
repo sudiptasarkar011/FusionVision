@@ -8,24 +8,93 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo">
-            <img src="Logo.png" alt="Fusion Vision Logo">
+        <!-- Logo in the Top Center -->
+        <div class="logo-center">
+            <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
+            <h1>Fusion Vision</h1>
         </div>
-        <h1>Fusion Vision</h1>
-        <p>Your go-to solution for scanning and analyzing images efficiently.</p>
+        <!-- Login/Register Section -->
+        <div class="auth-section">
+            <button id="loginButton">Login</button>
+            <button id="registerButton">Register</button>
+        </div>
     </header>
+
     <main>
-        <section class="features">
-            <h2>Features</h2>
-            <p>Upload, scan, and extract data from images effortlessly.</p>
-        </section>
-        <section class="call-to-action">
-            <button class="scan-button" onclick="requestPermissions()">Start Scanning</button>
-        </section>
+        <!-- Alternative Text to Engage Users -->
+        <div class="info-section">
+            <h2>Transform the Way You Scan!</h2>
+            <p>Fusion Vision brings cutting-edge technology to your fingertips. Capture, analyze, and detect objects like never before.</p>
+        </div>
+
+        <!-- Scanning Section -->
+        <div class="scanning-container">
+            <h2>Ready to Get Started?</h2>
+            <button id="startScanning">Start Scanning</button>
+        </div>
     </main>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <button class="close-modal" onclick="closeModal('loginModal')">Close</button>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerName" placeholder="Name" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <button class="close-modal" onclick="closeModal('registerModal')">Close</button>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Fusion Vision. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // Redirect to camera preview on "Start Scanning"
+        document.getElementById('startScanning').addEventListener('click', () => {
+            window.location.href = "camera.html";
+        });
+
+        // Show Login Modal
+        document.getElementById('loginButton').addEventListener('click', () => {
+            document.getElementById('loginModal').style.display = "block";
+        });
+
+        // Show Register Modal
+        document.getElementById('registerButton').addEventListener('click', () => {
+            document.getElementById('registerModal').style.display = "block";
+        });
+
+        // Close Modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Handle Logo Click to Zoom
+        const logo = document.querySelector('.zoomable');
+        logo.addEventListener('click', () => {
+            if (logo.classList.contains('zoomed')) {
+                logo.classList.remove('zoomed');
+            } else {
+                logo.classList.add('zoomed');
+            }
+        });
+    </script>
 </body>
 </html>
