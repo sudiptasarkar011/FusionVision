@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "init-db": "mysql -u root -p < data.sql",
+    "start": "node server.js"
+  }
+} 

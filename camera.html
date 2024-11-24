@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Object Detection</title>
+    <title>Scanner - Fusion Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
@@ -12,57 +13,333 @@
 </head>
 <body>
     <header class="header">
-        <h1>Camera Preview with Object Detection</h1>
+        <div class="logo-section">
+            <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
+            <h1 class="brand-title">Fusion Vision</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="features.html" class="nav-link">Features</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn-secondary" id="backButton">Back</button>
+        </div>
     </header>
-    <main>
-        <div class="camera-container">
-            <!-- Live camera feed -->
-            <video id="cameraPreview" autoplay></video>
-        </div>
-        <div class="controls">
-            <button class="scan-button" onclick="captureImage()">Capture Image</button>
-        </div>
-        <div class="captured-image-container">
-            <!-- Captured image and result -->
-            <canvas id="capturedCanvas"></canvas>
-        </div>
-        <div class="controls">
-            <button class="scan-button" onclick="processCapturedImage()">Scan Image</button>
-            <button class="scan-button" onclick="stopCamera()">Stop Camera</button>
+
+    <main class="scanner-content">
+        <div class="scanner-container">
+            <div class="scanner-header">
+                <h2 id="welcomeMessage">Object Scanner</h2>
+                <p class="scanner-subtitle">Position objects in the camera view for detection</p>
+            </div>
+
+            <div class="camera-section">
+                <!-- Camera Feed -->
+                <div class="camera-feed-container">
+                    <video id="cameraFeed" autoplay playsinline></video>
+                    <canvas id="detectionCanvas" class="detection-overlay"></canvas>
+                </div>
+
+                <!-- Controls -->
+                <div class="scanner-controls">
+                    <button class="btn-primary" id="startScan">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                        </svg>
+                        Start Scanning
+                    </button>
+                    <button class="btn-secondary" id="captureBtn">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-7 7H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4z"/>
+                        </svg>
+                        Capture
+                    </button>
+                    <button class="btn-secondary" id="stopScan">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M6 6h12v12H6z"/>
+                        </svg>
+                        Stop
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <h3>Detection Results</h3>
+                <div class="results-container" id="detectionResults">
+                    <!-- Results will be populated here -->
+                </div>
+                
+                <!-- Captured Images Gallery -->
+                <div class="captured-gallery" id="capturedGallery">
+                    <h3>Captured Images</h3>
+                    <div class="gallery-grid" id="galleryGrid">
+                        <!-- Captured images will be displayed here -->
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
-    <footer>
+
+    <footer class="footer">
         <p>&copy; 2024 Fusion Vision. All rights reserved.</p>
     </footer>
-    <script src="object-detection.js"></script>
-</body>
-    <style>
-        .scan-button {
-            padding: 20px 35px;
-            font-size: 20px;
-            min-width: 200px;
-            display: block;
-            width: 90%;
-            margin: 15px auto;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+
+    <script>
+        let stream;
+        let model;
+        let isScanning = false;
+
+        // Initialize camera and model
+        async function init() {
+            try {
+                // Load COCO-SSD model
+                model = await cocoSsd.load();
+                
+                // Setup camera
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'environment',
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
+                
+                const video = document.getElementById('cameraFeed');
+                video.srcObject = stream;
+                
+                // Setup detection canvas
+                const canvas = document.getElementById('detectionCanvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                
+                // Welcome message
+                const username = localStorage.getItem('currentUser');
+                if (username) {
+                    document.getElementById('welcomeMessage').textContent = `Welcome, ${username}!`;
+                }
+            } catch (error) {
+                console.error('Initialization error:', error);
+                alert('Error initializing camera or AI model. Please check permissions.');
+            }
         }
 
-        .scan-button:hover {
-            background-color: #0056b3;
+        // Start object detection
+        async function startDetection() {
+            if (!isScanning) return;
+            
+            const video = document.getElementById('cameraFeed');
+            const canvas = document.getElementById('detectionCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Detect objects
+            const predictions = await model.detect(video);
+            
+            // Clear previous drawings
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw detections
+            predictions.forEach(prediction => {
+                const [x, y, width, height] = prediction.bbox;
+                
+                // Draw box
+                ctx.strokeStyle = '#003366';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(x, y, width, height);
+                
+                // Draw label
+                ctx.fillStyle = '#002857';
+                ctx.fillRect(x, y - 25, prediction.class.length * 8 + 20, 25);
+                ctx.fillStyle = 'white';
+                ctx.font = '16px Inter';
+                ctx.fillText(prediction.class, x + 5, y - 7);
+                
+                // Update results display
+                updateResults(prediction);
+            });
+            
+            // Continue detection
+            requestAnimationFrame(startDetection);
+        }
+
+        // Update results display
+        function updateResults(prediction) {
+            const resultsContainer = document.getElementById('detectionResults');
+            const resultElement = document.createElement('div');
+            resultElement.className = 'detection-result';
+            resultElement.innerHTML = `
+                <span class="result-label">${prediction.class}</span>
+                <span class="result-confidence">${Math.round(prediction.score * 100)}% confidence</span>
+            `;
+            resultsContainer.appendChild(resultElement);
+            
+            // Limit displayed results
+            if (resultsContainer.children.length > 5) {
+                resultsContainer.removeChild(resultsContainer.firstChild);
+            }
+        }
+
+        // Capture image
+        function captureImage() {
+            const video = document.getElementById('cameraFeed');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            
+            // Save to gallery
+            const galleryGrid = document.getElementById('galleryGrid');
+            const img = document.createElement('img');
+            img.src = canvas.toDataURL('image/jpeg');
+            img.className = 'gallery-image';
+            galleryGrid.appendChild(img);
+        }
+
+        // Event Listeners
+        document.getElementById('startScan').addEventListener('click', () => {
+            isScanning = true;
+            startDetection();
+        });
+
+        document.getElementById('stopScan').addEventListener('click', () => {
+            isScanning = false;
+        });
+
+        document.getElementById('captureBtn').addEventListener('click', captureImage);
+
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+        // Initialize on load
+        window.addEventListener('load', init);
+    </script>
+
+    <style>
+        .scanner-content {
+            padding-top: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+        }
+
+        .scanner-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .scanner-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .scanner-subtitle {
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .camera-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .camera-feed-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #cameraFeed {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .detection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .scanner-controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            margin-right: 8px;
+        }
+
+        .results-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .detection-result {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: var(--gray-light);
+            border-radius: 6px;
+            margin: 0.5rem 0;
+        }
+
+        .result-label {
+            font-weight: 500;
+        }
+
+        .result-confidence {
+            color: var(--gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
-            .scan-button {
-                padding: 25px 40px;
-                font-size: 24px;
-                min-width: 250px;
-                width: 95%;
-                margin: 20px auto;
+            .scanner-controls {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .scanner-controls button {
+                width: 100%;
             }
         }
     </style>
+</body>
 </html>
