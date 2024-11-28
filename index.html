@@ -94,5 +94,58 @@
     <footer class="footer">
         <p>&copy; 2024 Fusion Vision. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Add this after your existing HTML, before the closing </body> tag
+        window.addEventListener('load', () => {
+            // Small delay to ensure voices are loaded
+            setTimeout(() => {
+                const welcomeMessage = "Welcome to Fusion Vision, Start Scanning objects around you and know about your surroundings with us";
+                const utterance = new SpeechSynthesisUtterance(welcomeMessage);
+                
+                // Get available voices and select a female voice
+                const voices = window.speechSynthesis.getVoices();
+                const femaleVoice = voices.find(voice => 
+                    voice.name.includes('female') || 
+                    voice.name.includes('Female') || 
+                    voice.name.includes('Samantha') ||
+                    voice.name.includes('Google UK English Female')
+                );
+                
+                // Configure the voice
+                utterance.voice = femaleVoice;
+                utterance.lang = 'en-IN';
+                utterance.rate = 0.9;  // Slightly slower for clarity
+                utterance.pitch = 1.2; // Slightly higher pitch for female voice
+                utterance.volume = 1;  // Full volume
+                
+                // Ensure voices are loaded before speaking
+                if (window.speechSynthesis.getVoices().length === 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', () => {
+                        window.speechSynthesis.speak(utterance);
+                    });
+                } else {
+                    window.speechSynthesis.speak(utterance);
+                }
+                
+                // Optional: Add visual feedback while speaking
+                const heroTitle = document.querySelector('.hero-title');
+                if (heroTitle) {
+                    heroTitle.style.animation = 'pulse 2s ease-in-out';
+                }
+            }, 1000);
+        });
+
+        // Add this CSS to your existing styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

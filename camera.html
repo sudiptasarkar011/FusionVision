@@ -62,6 +62,12 @@
                         </svg>
                         Stop
                     </button>
+                    <button class="btn-secondary" id="muteBtn">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                        Toggle Audio
+                    </button>
                 </div>
             </div>
 
@@ -91,6 +97,8 @@
         let stream;
         let model;
         let isScanning = false;
+        let isMuted = false;
+        let narrationCount = 0;
 
         // Initialize camera and model
         async function init() {
@@ -126,60 +134,339 @@
             }
         }
 
-        // Start object detection
-        async function startDetection() {
+        // Add these helper functions for position detection
+        function getRelativePosition(x, videoWidth) {
+            const third = videoWidth / 3;
+            if (x < third) return "on the left";
+            if (x > third * 2) return "on the right";
+            return "in the center";
+        }
+
+        // Add these detailed detection functions
+        class DetailedDetector {
+            constructor() {
+                this.personAttributes = {
+                    wearables: ['glasses', 'hat', 'mask', 'headphones'],
+                    clothing: ['shirt', 't-shirt', 'jacket', 'dress'],
+                    colors: ['red', 'blue', 'white', 'black', 'green'],
+                    actions: ['standing', 'sitting', 'walking', 'holding']
+                };
+
+                this.objectAttributes = {
+                    toys: ['soft toy', 'teddy bear', 'doll', 'plush'],
+                    colors: ['red', 'blue', 'white', 'black', 'brown', 'pink'],
+                    size: ['small', 'medium', 'large'],
+                    texture: ['soft', 'hard', 'fluffy', 'smooth']
+                };
+            }
+
+            async analyzeImage(prediction, imageData) {
+                const [x, y, width, height] = prediction.bbox;
+                const attributes = [];
+
+                if (prediction.class === 'person') {
+                    // Analyze face region for glasses
+                    const faceRegion = this.extractFaceRegion(imageData, x, y, width, height);
+                    const faceAttributes = await this.detectFaceAttributes(faceRegion);
+                    attributes.push(...faceAttributes);
+
+                    // Analyze clothing
+                    const clothingRegion = this.extractClothingRegion(imageData, x, y, width, height);
+                    const clothingAttributes = this.detectClothingAttributes(clothingRegion);
+                    attributes.push(...clothingAttributes);
+
+                } else if (this.isTypeOf(prediction.class, 'toy')) {
+                    const toyAttributes = this.detectToyAttributes(imageData, x, y, width, height);
+                    attributes.push(...toyAttributes);
+                }
+
+                return attributes;
+            }
+
+            isTypeOf(className, category) {
+                const toyKeywords = ['teddy', 'toy', 'doll', 'plush', 'stuffed'];
+                return toyKeywords.some(keyword => className.toLowerCase().includes(keyword));
+            }
+        }
+
+        // Enhanced detection configuration
+        const DETECTION_CONFIG = {
+            scoreThreshold: 0.85,    // Increased confidence threshold
+            iouThreshold: 0.6,      // Better overlap handling
+            maxDetections: 5,       // Limit detections
+            modelSize: 'large'      // Use larger model for better accuracy
+        };
+
+        // Detailed attribute detection class
+        class EnhancedDetector {
+            constructor() {
+                this.narrationCount = 0;
+                this.lastDetections = null;
+                this.stabilityCounter = 0;
+                this.requiredStability = 10; // Frames of stable detection before narrating
+            }
+
+            async detectWithConfidence(video) {
+                // Load enhanced model if not already loaded
+                if (!this.model) {
+                    this.model = await cocoSsd.load({
+                        base: 'mobilenet_v2',
+                        modelUrl: 'https://tfhub.dev/tensorflow/tfjs-model/ssd_mobilenet_v2/1/default/1'
+                    });
+                }
+
+                const predictions = await this.model.detect(video, {
+                    score: DETECTION_CONFIG.scoreThreshold,
+                    iouThreshold: DETECTION_CONFIG.iouThreshold,
+                    topk: DETECTION_CONFIG.maxDetections
+                });
+
+                return this.stabilizeDetections(predictions);
+            }
+
+            stabilizeDetections(predictions) {
+                if (!this.lastDetections) {
+                    this.lastDetections = predictions;
+                    return null;
+                }
+
+                // Compare with last detections for stability
+                const isStable = this.compareDetections(predictions, this.lastDetections);
+                
+                if (isStable) {
+                    this.stabilityCounter++;
+                    if (this.stabilityCounter >= this.requiredStability) {
+                        return predictions;
+                    }
+                } else {
+                    this.stabilityCounter = 0;
+                    this.lastDetections = predictions;
+                }
+
+                return null;
+            }
+
+            async analyzeScene(predictions, video) {
+                let detailedResults = [];
+
+                for (const pred of predictions) {
+                    const details = await this.getDetailedAttributes(pred, video);
+                    const position = this.getAccuratePosition(pred.bbox[0], video.videoWidth);
+                    detailedResults.push({ ...details, position });
+                }
+
+                return this.createNaturalDescription(detailedResults);
+            }
+
+            async getDetailedAttributes(prediction, video) {
+                const attributes = {
+                    person: {
+                        wearables: await this.detectWearables(prediction, video),
+                        clothing: await this.detectClothing(prediction, video),
+                        posture: this.detectPosture(prediction)
+                    },
+                    object: {
+                        type: this.classifyObjectType(prediction.class),
+                        attributes: await this.detectObjectAttributes(prediction, video)
+                    }
+                };
+
+                return this.formatAttributes(prediction.class, attributes);
+            }
+
+            narrate(description) {
+                if (this.narrationCount < 2) {
+                    this.speakWithEmphasis(description);
+                    this.narrationCount++;
+                    return true;
+                }
+                return false;
+            }
+
+            speakWithEmphasis(text) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                
+                // Get available voices and select a female voice
+                const voices = window.speechSynthesis.getVoices();
+                const femaleVoice = voices.find(voice => 
+                    voice.name.includes('female') || 
+                    voice.name.includes('Female') || 
+                    voice.name.includes('Samantha') ||
+                    voice.name.includes('Google UK English Female')
+                );
+                
+                // Configure the voice
+                utterance.voice = femaleVoice;
+                utterance.lang = 'en-IN';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.2; // Slightly higher pitch for female voice
+                
+                // Add pauses and emphasis
+                const processedText = text
+                    .replace(' and ', ', and ')
+                    .replace('wearing', 'wearing,')
+                    .replace('left', 'left side')
+                    .replace('right', 'right side');
+                    
+                utterance.text = processedText;
+                
+                // Ensure voices are loaded before speaking
+                if (window.speechSynthesis.getVoices().length === 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', () => {
+                        window.speechSynthesis.speak(utterance);
+                    });
+                } else {
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                // Show visual feedback
+                this.updateVisualFeedback(text, this.narrationCount);
+            }
+
+            compareDetections(current, previous) {
+                if (current.length !== previous.length) return false;
+                
+                return current.every((pred, i) => {
+                    const prevPred = previous[i];
+                    const sameClass = pred.class === prevPred.class;
+                    const similarPosition = Math.abs(pred.bbox[0] - prevPred.bbox[0]) < 20;
+                    return sameClass && similarPosition;
+                });
+            }
+
+            getAccuratePosition(x, videoWidth) {
+                const third = videoWidth / 3;
+                if (x < third) return "on the left";
+                if (x > third * 2) return "on the right";
+                return "in the center";
+            }
+
+            createNaturalDescription(results) {
+                if (results.length === 0) return "";
+                
+                const descriptions = results.map(result => {
+                    const { class: objClass, attributes, position } = result;
+                    if (objClass === 'person') {
+                        return `a person ${attributes.join(' ')} ${position}`;
+                    } else {
+                        return `a ${attributes.join(' ')} ${objClass} ${position}`;
+                    }
+                });
+
+                return descriptions.join(' and ');
+            }
+
+            updateVisualFeedback(text, count) {
+                const resultsContainer = document.getElementById('detectionResults');
+                const resultElement = document.createElement('div');
+                resultElement.className = 'detection-result';
+                resultElement.setAttribute('data-narration', `Narration ${count + 1} of 2`);
+                resultElement.textContent = text;
+                resultsContainer.insertBefore(resultElement, resultsContainer.firstChild);
+            }
+        }
+
+        // Add this function after your existing scripts
+        function drawEnhancedVisuals(ctx, detections, description) {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            
+            detections.forEach(detection => {
+                const [x, y, width, height] = detection.bbox;
+                
+                // Draw detection box
+                ctx.strokeStyle = '#003366';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(x, y, width, height);
+                
+                // Draw label background
+                const position = getRelativePosition(x, ctx.canvas.width);
+                const label = `${detection.class} (${position})`;
+                ctx.font = 'bold 16px Inter';
+                const textWidth = ctx.measureText(label).width;
+                
+                ctx.fillStyle = 'rgba(0, 40, 87, 0.9)';
+                ctx.fillRect(x, y - 30, textWidth + 20, 30);
+                
+                // Draw label text
+                ctx.fillStyle = 'white';
+                ctx.fillText(label, x + 10, y - 8);
+            });
+        }
+
+        // Replace the startEnhancedDetection function with this simpler version
+        async function startEnhancedDetection() {
             if (!isScanning) return;
             
             const video = document.getElementById('cameraFeed');
             const canvas = document.getElementById('detectionCanvas');
             const ctx = canvas.getContext('2d');
             
+            // Make sure canvas dimensions match video
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
             // Detect objects
             const predictions = await model.detect(video);
             
-            // Clear previous drawings
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw detections
-            predictions.forEach(prediction => {
-                const [x, y, width, height] = prediction.bbox;
+            if (predictions.length > 0 && narrationCount < 2 && !isMuted) {
+                // Create description of all objects with positions
+                let description = "I can see ";
+                const objects = predictions.map(pred => {
+                    const position = getRelativePosition(pred.bbox[0], video.videoWidth);
+                    return `${pred.class} ${position}`;
+                });
                 
-                // Draw box
-                ctx.strokeStyle = '#003366';
-                ctx.lineWidth = 2;
-                ctx.strokeRect(x, y, width, height);
+                if (objects.length === 1) {
+                    description += objects[0];
+                } else if (objects.length === 2) {
+                    description += `${objects[0]} and ${objects[1]}`;
+                } else {
+                    const lastObject = objects.pop();
+                    description += `${objects.join(', ')}, and ${lastObject}`;
+                }
                 
-                // Draw label
-                ctx.fillStyle = '#002857';
-                ctx.fillRect(x, y - 25, prediction.class.length * 8 + 20, 25);
-                ctx.fillStyle = 'white';
-                ctx.font = '16px Inter';
-                ctx.fillText(prediction.class, x + 5, y - 7);
+                // Speak the description
+                const utterance = new SpeechSynthesisUtterance(description);
+                utterance.lang = 'en-IN';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
+                window.speechSynthesis.speak(utterance);
                 
-                // Update results display
-                updateResults(prediction);
-            });
+                // Update visual results
+                const resultsContainer = document.getElementById('detectionResults');
+                const resultElement = document.createElement('div');
+                resultElement.className = 'detection-result';
+                resultElement.setAttribute('data-narration', `Narration ${narrationCount + 1} of 2`);
+                resultElement.textContent = description;
+                resultsContainer.insertBefore(resultElement, resultsContainer.firstChild);
+                
+                narrationCount++;
+            }
             
-            // Continue detection
-            requestAnimationFrame(startDetection);
-        }
-
-        // Update results display
-        function updateResults(prediction) {
-            const resultsContainer = document.getElementById('detectionResults');
-            const resultElement = document.createElement('div');
-            resultElement.className = 'detection-result';
-            resultElement.innerHTML = `
-                <span class="result-label">${prediction.class}</span>
-                <span class="result-confidence">${Math.round(prediction.score * 100)}% confidence</span>
-            `;
-            resultsContainer.appendChild(resultElement);
+            // Draw boxes and labels
+            drawEnhancedVisuals(ctx, predictions);
             
-            // Limit displayed results
-            if (resultsContainer.children.length > 5) {
-                resultsContainer.removeChild(resultsContainer.firstChild);
+            // Continue detection if still scanning
+            if (isScanning) {
+                requestAnimationFrame(startEnhancedDetection);
             }
         }
+
+        // Update the start scan click handler
+        document.getElementById('startScan').addEventListener('click', () => {
+            isScanning = true;
+            narrationCount = 0;
+            startEnhancedDetection();
+        });
+
+        // Update the stop scan click handler
+        document.getElementById('stopScan').addEventListener('click', () => {
+            isScanning = false;
+            narrationCount = 0;
+            const canvas = document.getElementById('detectionCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
 
         // Capture image
         function captureImage() {
@@ -200,13 +487,9 @@
         }
 
         // Event Listeners
-        document.getElementById('startScan').addEventListener('click', () => {
-            isScanning = true;
-            startDetection();
-        });
-
         document.getElementById('stopScan').addEventListener('click', () => {
             isScanning = false;
+            narrationCount = 0; // Reset narration count
         });
 
         document.getElementById('captureBtn').addEventListener('click', captureImage);
@@ -215,8 +498,26 @@
             window.location.href = 'index.html';
         });
 
+        document.getElementById('muteBtn').addEventListener('click', () => {
+            isMuted = !isMuted;
+            if (isMuted) {
+                window.speechSynthesis.cancel(); // Stop current speech
+                document.getElementById('muteBtn').classList.add('muted');
+            } else {
+                document.getElementById('muteBtn').classList.remove('muted');
+            }
+        });
+
         // Initialize on load
-        window.addEventListener('load', init);
+        window.addEventListener('load', async () => {
+            try {
+                await init();
+                console.log('Initialization complete');
+            } catch (error) {
+                console.error('Failed to initialize:', error);
+                alert('Failed to initialize camera or AI model. Please check permissions and reload the page.');
+            }
+        });
     </script>
 
     <style>
@@ -294,12 +595,48 @@
         }
 
         .detection-result {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem;
-            background: var(--gray-light);
-            border-radius: 6px;
+            position: relative;
+            padding: 1rem;
             margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .detection-result[data-narration="1"],
+        .detection-result[data-narration="2"] {
+            animation: highlight 2s ease-in-out;
+        }
+
+        @keyframes highlight {
+            0% { background: rgba(0,112,243,0.1); }
+            50% { background: rgba(0,112,243,0.2); }
+            100% { background: white; }
+        }
+
+        .confidence-indicator {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .confidence-bar {
+            width: 50px;
+            height: 4px;
+            background: var(--gray-light);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
         }
 
         .result-label {
@@ -339,6 +676,67 @@
             .scanner-controls button {
                 width: 100%;
             }
+        }
+
+        .btn-secondary.muted {
+            background-color: #ff4444;
+            color: white;
+        }
+
+        .btn-secondary.muted .icon {
+            fill: white;
+        }
+
+        /* Animation for speaking state */
+        @keyframes speaking {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .detection-result:first-child {
+            animation: speaking 1s ease-in-out;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .detection-result[data-narration]::after {
+            content: attr(data-narration);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            background: rgba(0, 112, 243, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Animation for group detections */
+        @keyframes groupHighlight {
+            0% { background: rgba(0, 112, 243, 0.1); }
+            50% { background: rgba(0, 112, 243, 0.2); }
+            100% { background: rgba(0, 112, 243, 0.1); }
+        }
+
+        .detection-result[data-narration] {
+            animation: groupHighlight 2s infinite;
+        }
+
+        .position-label {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-left: 0.5rem;
+            padding: 2px 6px;
+            background: rgba(0, 112, 243, 0.1);
+            border-radius: 4px;
+        }
+
+        .detection-group {
+            background: rgba(0, 112, 243, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 0.5rem 0;
         }
     </style>
 </body>
