@@ -379,7 +379,7 @@
                 ctx.strokeRect(x, y, width, height);
                 
                 // Draw label background
-                const position = getRelativePosition(x, ctx.canvas.width);
+                const position = getRelativePosition(ctx.canvas.width - (x + width / 2), ctx.canvas.width);
                 const label = `${detection.class} (${position})`;
                 ctx.font = 'bold 16px Inter';
                 const textWidth = ctx.measureText(label).width;
@@ -412,7 +412,7 @@
                 // Create description of all objects with positions
                 let description = "I can see ";
                 const objects = predictions.map(pred => {
-                    const position = getRelativePosition(pred.bbox[0], video.videoWidth);
+                    const position = getRelativePosition(video.videoWidth - (pred.bbox[0] + pred.bbox[2] / 2), video.videoWidth);
                     return `${pred.class} ${position}`;
                 });
                 
