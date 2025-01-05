@@ -573,3 +573,132 @@ body {
 .user-menu-item:hover {
     background: var(--gray-light);
 }
+
+
+footer {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    font-family: 'Arial', sans-serif;
+    color: #6c757d;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .footer-section {
+    margin: 20px;
+  }
+  
+  .footer-section h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #6c757d;
+    font-size: 14px;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #000;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons li {
+    list-style: none;
+  }
+  
+  .social-icons li a {
+    font-size: 20px;
+    color: #6c757d;
+  }
+  
+  /* Newsletter Section Styling */
+  .footer-section.newsletter {
+    grid-column: span 4; /* span across all sections */
+    padding: 30px;
+    background-color: #ffffff;
+    background-image: url('https://media.istockphoto.com/id/666193858/photo/indian-vegetarian-office-or-school-lunch-box-or-tiffin-with-north-indian-or-maharashtrian.jpg?s=612x612&w=0&k=20&c=Ac-U7hY1leIuM97jLNPqzv7SX5DbZofu5p_pfUCgeJA=');
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .footer-section.newsletter h2 {
+    font-size: 22px;
+    color: #ea0202;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section.newsletter p {
+    font-size: 14px;
+    color: #130111;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section.newsletter .newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .footer-section.newsletter .newsletter-form input {
+    padding: 10px;
+    font-size: 14px;
+    width: 250px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .footer-section.newsletter .newsletter-form input:focus {
+    border-color: #ff5722; /* Focused border color */
+    outline: none;
+  }
+  
+  .footer-section.newsletter .subscribe-btn {
+    background: linear-gradient(90deg, #ff5722, #ff0000); /* Red gradient */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .footer-section.newsletter .subscribe-btn:hover {
+    background: linear-gradient(90deg, #ff0000, #ff5722); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Button hover animation */
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #e9ecef;
+    font-size: 14px;
+  }
+  
