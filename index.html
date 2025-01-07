@@ -141,6 +141,10 @@
     <script>
         // Add this after your existing HTML, before the closing </body> tag
         window.addEventListener('load', () => {
+            // Stop speech synthesis when the page is unloaded
+            window.addEventListener('beforeunload', () => {
+                window.speechSynthesis.cancel();
+            });
             // Small delay to ensure voices are loaded
             setTimeout(() => {
                 const welcomeMessage = "Welcome to Fusion Vision, Start Scanning objects around you and know about your surroundings with us";
