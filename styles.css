@@ -17,9 +17,12 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background: var(--background-color) url('FusionVision_BG_blurred.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: var(--text-color);
     line-height: 1.6;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .header {
@@ -576,8 +579,10 @@ body {
 
 
 footer {
-    background-color: #f8f9fa;
-    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px 0;
+    margin: 20px;
+    border-radius: 10px;
     font-family: 'Arial', sans-serif;
     color: #6c757d;
   }
