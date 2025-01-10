@@ -4,20 +4,30 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
-const fs = require("fs");
 const { body, validationResult } = require("express-validator");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 app.use(express.static("uploads"));
 
-const JWT_SECRET = "your_secret_key";
+// Environment Variables
+const PORT = process.env.PORT || 5000;
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/fusion-vision";
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  console.error("JWT_SECRET is not defined in .env");
+  process.exit(1); // Exit if JWT_SECRET is not set
+}
 
 // MongoDB Connection
-mongoose.connect("mongodb://localhost:27017/fusion-vision", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("MongoDB connected successfully."))
+mongoose
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected successfully."))
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // User Schema
@@ -59,7 +69,7 @@ app.post(
       if (error.code === 11000) {
         res.status(400).json({ message: "Email already registered." });
       } else {
-        res.status(500).json({ message: "Error registering user.", error });
+        res.status(500).json({ message: "Error registering user.", error: error.message });
       }
     }
   }
@@ -94,7 +104,7 @@ app.post(
       const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "1h" });
       res.status(200).json({ message: "Login successful!", token });
     } catch (error) {
-      res.status(500).json({ message: "Error logging in.", error });
+      res.status(500).json({ message: "Error logging in.", error: error.message });
     }
   }
 );
@@ -123,7 +133,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
 
     res.status(200).json({ message: "Image uploaded successfully!", filename: req.file.filename });
   } catch (error) {
-    res.status(500).json({ message: "Error uploading image.", error });
+    res.status(500).json({ message: "Error uploading image.", error: error.message });
   }
 });
 
@@ -139,11 +149,17 @@ app.get("/images", async (req, res) => {
 
     res.status(200).json({ images: user.images });
   } catch (error) {
-    res.status(500).json({ message: "Error fetching images.", error });
+    res.status(500).json({ message: "Error fetching images.", error: error.message });
   }
 });
 
+// Centralized Error Handler (Optional)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
+
 // Start the Server
-app.listen(5000, () => {
-  console.log("Server is running on http://localhost:5000");
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
