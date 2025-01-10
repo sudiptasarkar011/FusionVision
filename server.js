@@ -13,12 +13,17 @@ app.use(express.static("uploads"));
 
 // Environment Variables
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/fusion-vision";
+const MONGODB_URI = process.env.MONGODB_URI;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
   console.error("JWT_SECRET is not defined in .env");
   process.exit(1); // Exit if JWT_SECRET is not set
+}
+
+if (!MONGODB_URI) {
+  console.error("MONGODB_URI is not defined in .env");
+  process.exit(1); // Exit if MONGODB_URI is not set
 }
 
 // MongoDB Connection
