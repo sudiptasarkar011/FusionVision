@@ -144,7 +144,7 @@
         async function init() {
             try {
                 // Load COCO-SSD model
-                model = await cocoSsd.load();
+                model = await cocoSsd.load({ base: 'mobilenet_v2' });
                 
                 // Setup camera
                 stream = await navigator.mediaDevices.getUserMedia({ 
