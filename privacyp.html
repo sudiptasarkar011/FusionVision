@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Logo.png">
-    <title>Fusion Vision</title>
-    <!-- Add Inter font -->
+    <title>Privacy Policy - Fusion Vision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
 </head>
 <body>
     <header class="header" style="background: rgba(255, 255, 255, 0.5);">
@@ -18,82 +15,40 @@
             <h1 class="brand-title">Fusion Vision</h1>
         </div>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="features.html" class="nav-link">Features</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <a href="reviews.html" class="nav-link">Reviews</a>
+            <a href="privacyp.html" class="nav-link active">Privacy Policy</a>
         </nav>
+        <div class="auth-buttons">
+            <button class="btn-secondary" id="loginButton">Sign In</button>
+            <button class="btn-primary" id="registerButton">Get Started</button>
+        </div>
     </header>
 
     <main class="main-content">
-        <section class="hero-section" style="background: rgba(255, 255, 255, 0.75); padding: 10px; border-radius: 10px;">
-            <h2 class="hero-title">Fusion Vision</h2>
-            <p class="hero-subtitle">Experience real-time object detection powered by advanced AI technology.</p>
-            <div class="center-button">
-                <button class="btn-primary btn-large" id="startScanning" onclick="window.location.href='camera.html'">
-                    Start Scanning
-                    <svg class="arrow-icon" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </button>
-            </div>
+        <section class="privacy-policy" style="background: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 10px; margin: 20px;">
+            <h2 class="section-title">Privacy Policy</h2>
+            <p style="line-height: 1.8; margin-bottom: 20px;">
+                At Fusion Vision, we prioritize your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you interact with our platform.
+            </p>
+            <h3 style="margin-top: 20px;">1. Information We Collect</h3>
+            <p style="line-height: 1.8;">We may collect personal data such as your name, email address, and usage details when you use our platform or interact with our services.</p>
+
+            <h3 style="margin-top: 20px;">2. How We Use Your Information</h3>
+            <p style="line-height: 1.8;">Your information is used to enhance your experience, improve our services, and communicate important updates.</p>
+
+            <h3 style="margin-top: 20px;">3. Data Security</h3>
+            <p style="line-height: 1.8;">We implement advanced security measures to protect your data from unauthorized access, loss, or misuse.</p>
+
+            <h3 style="margin-top: 20px;">4. Your Rights</h3>
+            <p style="line-height: 1.8;">You have the right to access, update, or delete your personal information. Contact us for assistance.</p>
+
+            <h3 style="margin-top: 20px;">5. Contact Us</h3>
+            <p style="line-height: 1.8;">If you have any questions about this Privacy Policy, please reach out to us at <a href="mailto:info@fusionvision.com" style="color: #e67e22; text-decoration: none;">info@fusionvision.com</a>.</p>
         </section>
     </main>
-
-    <!-- Modern Modal Design -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Welcome Back</h2>
-                <button class="close-button" onclick="closeModal('loginModal')">&times;</button>
-            </div>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Sign In</button>
-                <p class="form-footer">
-                    Don't have an account? 
-                    <a href="#" onclick="switchModal('loginModal', 'registerModal')">Sign up</a>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create Account</h2>
-                <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
-            </div>
-            <form id="registerForm" class="auth-form">
-                <div class="form-group">
-                    <label for="registerName">Name</label>
-                    <input type="text" id="registerName" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" placeholder="Create a password" required>
-                    <div class="password-strength" id="passwordStrength"></div>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Create Account</button>
-                <p class="form-footer">
-                    Already have an account? 
-                    <a href="#" onclick="switchModal('registerModal', 'loginModal')">Sign in</a>
-                </p>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
@@ -138,62 +93,5 @@
           <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Fusion Vision. All rights reserved.</p>
         </div>
       </footer>
-
-    <script>
-        // Add this after your existing HTML, before the closing </body> tag
-        window.addEventListener('load', () => {
-            // Stop speech synthesis when the page is unloaded
-            window.addEventListener('beforeunload', () => {
-                window.speechSynthesis.cancel();
-            });
-            // Small delay to ensure voices are loaded
-            setTimeout(() => {
-                const welcomeMessage = "Welcome to Fusion Vision, Start Scanning objects around you and know about your surroundings with us";
-                const utterance = new SpeechSynthesisUtterance(welcomeMessage);
-                
-                // Get available voices and select a female voice
-                const voices = window.speechSynthesis.getVoices();
-                const femaleVoice = voices.find(voice => 
-                    voice.name.includes('female') || 
-                    voice.name.includes('Female') || 
-                    voice.name.includes('Samantha') ||
-                    voice.name.includes('Google UK English Female')
-                );
-                
-                // Configure the voice
-                utterance.voice = femaleVoice;
-                utterance.lang = 'en-IN';
-                utterance.rate = 0.9;  // Slightly slower for clarity
-                utterance.pitch = 1.2; // Slightly higher pitch for female voice
-                utterance.volume = 1;  // Full volume
-                
-                // Ensure voices are loaded before speaking
-                if (window.speechSynthesis.getVoices().length === 0) {
-                    window.speechSynthesis.addEventListener('voiceschanged', () => {
-                        window.speechSynthesis.speak(utterance);
-                    });
-                } else {
-                    window.speechSynthesis.speak(utterance);
-                }
-                
-                // Optional: Add visual feedback while speaking
-                const heroTitle = document.querySelector('.hero-title');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-        });
-
-        // Add this CSS to your existing styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
 </body>
 </html>
