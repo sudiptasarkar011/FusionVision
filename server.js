@@ -5,25 +5,24 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const { body, validationResult } = require("express-validator");
+const helmet = require("helmet");
 require("dotenv").config();
 
 const app = express();
+
+// Middleware
 app.use(express.json());
 app.use(express.static("uploads"));
+app.use(helmet()); // Adds security headers
 
 // Environment Variables
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 const JWT_SECRET = process.env.JWT_SECRET;
 
-if (!JWT_SECRET) {
-  console.error("JWT_SECRET is not defined in .env");
-  process.exit(1); // Exit if JWT_SECRET is not set
-}
-
-if (!MONGODB_URI) {
-  console.error("MONGODB_URI is not defined in .env");
-  process.exit(1); // Exit if MONGODB_URI is not set
+if (!JWT_SECRET || !MONGODB_URI) {
+  console.error("Critical environment variables are missing in .env");
+  process.exit(1); // Exit if critical env variables are not set
 }
 
 // MongoDB Connection
@@ -33,7 +32,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("MongoDB connected successfully."))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  });
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -55,7 +57,9 @@ app.post(
   [
     body("name").notEmpty().withMessage("Name is required."),
     body("email").isEmail().withMessage("Valid email is required."),
-    body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters."),
+    body("password")
+      .isLength({ min: 6 })
+      .withMessage("Password must be at least 6 characters."),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -114,14 +118,29 @@ app.post(
   }
 );
 
-// Upload Middleware
+// Upload Middleware with Validation
 const storage = multer.diskStorage({
   destination: "uploads/",
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-const upload = multer({ storage });
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 2 * 1024 * 1024 }, // Limit file size to 2MB
+  fileFilter: (req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png/;
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = fileTypes.test(file.mimetype);
+
+    if (extname && mimetype) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only images (jpeg, jpg, png) are allowed."));
+    }
+  },
+});
 
 // Save Captured Image
 app.post("/upload", upload.single("image"), async (req, res) => {
@@ -158,10 +177,10 @@ app.get("/images", async (req, res) => {
   }
 });
 
-// Centralized Error Handler (Optional)
+// Centralized Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something went wrong!");
+  res.status(500).json({ message: err.message || "Something went wrong!" });
 });
 
 // Start the Server
