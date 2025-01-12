@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo.png">
+    <title>Features - Fusion Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Additional styling for the feature cards */
+        .feature-card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+        .feature-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+        }
+        .feature-description {
+            font-size: 16px;
+            color: #080808;
+            margin-top: 10px;
+        }
+        .feature-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .feature-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .feature-container .feature-card {
+            flex: 1;
+            max-width: 300px;
+            margin: 10px;
+        }
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .feature-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
+            <h1 class="brand-title">Fusion Vision</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="features.html" class="nav-link active">Features</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="reviews.html" class="nav-link">Reviews</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <h2 class="hero-title">Platform Features</h2>
+            <p class="hero-subtitle" style="color: #121111;">Explore the innovative features that make Fusion Vision stand out in object detection and AI-powered solutions.</p>
+        </section>
+
+        <section class="feature-container">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Real-Time Object Detection</h3>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Advanced AI Models</h3>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Multi-Class Detection</h3>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Customizable Training</h3>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card">
+                <h3 class="feature-title">High Accuracy and Precision</h3>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Edge Device Support</h3>
+            </div>
+
+            <!-- Feature 7 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Cloud Integration</h3>
+            </div>
+        </section>
+
+        <section class="tutorial-section" class="tutorial-section" style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+            <h2 style="font-size: 2rem; font-weight: bold;">Tutorial</h2>
+            <p style="font-size: 1.2rem; font-weight: 500;">Follow the simple steps to get started with Fusion Vision.</p>
+            <ul>
+                <li>Step 1: Launch the platform by scanning objects around you.</li>
+                <li>Step 2: Choose features such as real-time detection or training a custom model.</li>
+                <li>Step 3: Start analyzing results and exploring object insights.</li>
+            </ul>
+            <p>For further assistance, Contact us <a href="contact.html">Help Center</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 Fusion Vision. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Optional: Additional JavaScript functionality for modals, interactions, etc.
+    </script>
+</body>
+</html>
