@@ -9,6 +9,116 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 </head>
+<style>
+
+  .contact-form-container {
+  backdrop-filter: blur(10px); 
+  background: rgba(255, 255, 255, 0.9); 
+  width: 70%; 
+  max-width: 700px; 
+  padding: 20px; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto; 
+}
+
+.contact-form-container form {
+  width: 100%; 
+  max-height: 400px; 
+  overflow-y: auto; 
+}
+
+.contact-form-container input,
+.contact-form-container textarea,
+.contact-form-container button {
+  width: 100%;
+  margin-bottom: 15px; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+}
+
+.contact-form-container button {
+  background-color: #007bff; 
+  color: white; 
+  padding: 12px;
+  font-size: 16px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+.contact-form-container button:hover {
+  background-color: #0056b3; 
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Popup styles */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+}
+
+.popup p {
+  color: black; /* Makes the message text black for visibility */
+  font-size: 16px; /* Optional: Adjust font size */
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #0056b3;
+}
+
+.hidden {
+  display: none;
+}
+
+</style>
 <body>
     <header class="header" style="background: rgba(255, 255, 255, 0.5);">
         <div class="logo-section">
@@ -30,25 +140,62 @@
 
     <main class="main-content" >
         <section class="contact-section" style="background: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 10px;">
-            <h2 class="section-title">Contact Us</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn-primary">Send Message</button>
-            </form>
-        </section>
-    </main>
-
+          <div class="content">
+            <br>
+              <div class="contact-form-container">
+                <h1 class="text-center text-2xl font-bold text-gray-800 mb-6" style="text-align: center;">Contact Us</h1>
+                <h4 style="text-align: center;">We would love to hear from you!</h4>
+                <br>
+                <form id="contactForm">
+                  <label for="name" class="block font-semibold mb-2">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                    class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+            
+                  <label for="email" class="block font-semibold mb-2">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                    class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+            
+                  <label for="mobile" class="block font-semibold mb-2">Your Mobile No</label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Enter your mobile number"
+                    required
+                    class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+            
+                  <label for="message" class="block font-semibold mb-2">Your Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Enter your message"
+                    required
+                    class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  ></textarea>
+            
+                  <button
+                    type="submit"
+                    class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
     <footer>
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
           <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
@@ -63,7 +210,7 @@
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
-              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+              <li><a href="contact.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
             </ul>
           </div>
       
