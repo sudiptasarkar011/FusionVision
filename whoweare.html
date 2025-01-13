@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Logo.png">
-    <title>Fusion Vision</title>
-    <!-- Add Inter font -->
+    <title>Who We Are - FusionVision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
 </head>
 <body>
     <header class="header" style="background: rgba(255, 255, 255, 0.5);">
@@ -18,82 +15,75 @@
             <h1 class="brand-title">Fusion Vision</h1>
         </div>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="features.html" class="nav-link">Features</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <a href="reviews.html" class="nav-link">Reviews</a>
         </nav>
+        <div class="auth-buttons">
+            <button class="btn-secondary" id="loginButton">Sign In</button>
+            <button class="btn-primary" id="registerButton">Get Started</button>
+        </div>
     </header>
 
     <main class="main-content">
-        <section class="hero-section" style="background: rgba(255, 255, 255, 0.75); padding: 10px; border-radius: 10px;">
-            <h2 class="hero-title">Fusion Vision</h2>
-            <p class="hero-subtitle">Experience real-time object detection powered by advanced AI technology.</p>
-            <div class="center-button">
-                <button class="btn-primary btn-large" id="startScanning" onclick="window.location.href='camera.html'">
-                    Start Scanning
-                    <svg class="arrow-icon" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </button>
+        <section class="who-we-are" style="background: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 10px; margin: 20px;">
+            <div class="container">
+                <h1>Who We Are</h1>
+                <div class="section">
+                  <p>
+                    At <strong>FusionVision</strong>, we are a team of passionate innovators, researchers, and developers dedicated to creating cutting-edge solutions for video content authenticity. In an era dominated by digital media, where information is shared and consumed at lightning speed, the integrity of visual content has become more critical than ever.
+                  </p>
+                </div>
+                <div class="section">
+                  <h2>Our Vision</h2>
+                  <p>To build a future where digital media is trustworthy and every piece of video content can be verified for authenticity with precision and ease.</p>
+                </div>
+                <div class="section">
+                  <h2>Our Mission</h2>
+                  <ul>
+                    <li>To provide accessible and reliable tools for detecting manipulated videos.</li>
+                    <li>To educate the public about the impact of deepfake technology on society.</li>
+                    <li>To collaborate with organizations and governments in the fight against misinformation.</li>
+                  </ul>
+                </div>
+                <div class="section">
+                  <h2>What Drives Us</h2>
+                  <ul>
+                    <li><strong>Innovation</strong>: We are driven by the desire to push technological boundaries.</li>
+                    <li><strong>Integrity</strong>: Upholding honesty and transparency in everything we do.</li>
+                    <li><strong>Impact</strong>: Making a meaningful difference in combating the spread of fake media.</li>
+                  </ul>
+                </div>
+                <div class="section">
+                  <h2>Meet the Team</h2>
+                  <p>
+                    FusionVision is powered by a diverse team of:
+                  </p>
+                  <ul>
+                    <li><strong>Data Scientists and Engineers</strong>: Crafting robust AI/ML algorithms to detect deepfakes.</li>
+                    <li><strong>UI/UX Designers</strong>: Ensuring a seamless and intuitive experience for our users.</li>
+                    <li><strong>Ethics Advocates</strong>: Addressing the social and ethical implications of our technology.</li>
+                  </ul>
+                  <p>
+                    Together, we are not just building a tool — we are building trust.
+                  </p>
+                </div>
+                <div class="section">
+                  <h2>Why Choose FusionVision?</h2>
+                  <ul>
+                    <li><strong>State-of-the-Art AI</strong>: Our tools leverage the latest advancements in artificial intelligence to deliver accurate results.</li>
+                    <li><strong>User-Centric Design</strong>: Every feature we develop is tailored to meet the needs of our users.</li>
+                    <li><strong>Commitment to Security</strong>: Your data and privacy are always our top priority.</li>
+                  </ul>
+                  <p>Join us in shaping a world where authenticity prevails.</p>
+                </div>
             </div>
+            <footer>
+                &copy; 2025 FusionVision. All rights reserved.
+            </footer>
         </section>
     </main>
-
-    <!-- Modern Modal Design -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Welcome Back</h2>
-                <button class="close-button" onclick="closeModal('loginModal')">&times;</button>
-            </div>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Sign In</button>
-                <p class="form-footer">
-                    Don't have an account? 
-                    <a href="#" onclick="switchModal('loginModal', 'registerModal')">Sign up</a>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create Account</h2>
-                <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
-            </div>
-            <form id="registerForm" class="auth-form">
-                <div class="form-group">
-                    <label for="registerName">Name</label>
-                    <input type="text" id="registerName" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" placeholder="Create a password" required>
-                    <div class="password-strength" id="passwordStrength"></div>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Create Account</button>
-                <p class="form-footer">
-                    Already have an account? 
-                    <a href="#" onclick="switchModal('registerModal', 'loginModal')">Sign in</a>
-                </p>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
@@ -105,7 +95,7 @@
           <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
             <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Fusion Vision</h2>
             <ul style="list-style: none; padding: 0;">
-              <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
@@ -135,65 +125,8 @@
         </div>
       
         <div class="footer-bottom" style="padding: 10px; text-align: center; background-color: white;">
-          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Fusion Vision. All rights reserved.</p>
+          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Fusion Vision. Empowering the visually impaired.</p>
         </div>
       </footer>
-
-    <script>
-        // Add this after your existing HTML, before the closing </body> tag
-        window.addEventListener('load', () => {
-            // Stop speech synthesis when the page is unloaded
-            window.addEventListener('beforeunload', () => {
-                window.speechSynthesis.cancel();
-            });
-            // Small delay to ensure voices are loaded
-            setTimeout(() => {
-                const welcomeMessage = "Welcome to Fusion Vision, Start Scanning objects around you and know about your surroundings with us";
-                const utterance = new SpeechSynthesisUtterance(welcomeMessage);
-                
-                // Get available voices and select a female voice
-                const voices = window.speechSynthesis.getVoices();
-                const femaleVoice = voices.find(voice => 
-                    voice.name.includes('female') || 
-                    voice.name.includes('Female') || 
-                    voice.name.includes('Samantha') ||
-                    voice.name.includes('Google UK English Female')
-                );
-                
-                // Configure the voice
-                utterance.voice = femaleVoice;
-                utterance.lang = 'en-IN';
-                utterance.rate = 0.9;  // Slightly slower for clarity
-                utterance.pitch = 1.2; // Slightly higher pitch for female voice
-                utterance.volume = 1;  // Full volume
-                
-                // Ensure voices are loaded before speaking
-                if (window.speechSynthesis.getVoices().length === 0) {
-                    window.speechSynthesis.addEventListener('voiceschanged', () => {
-                        window.speechSynthesis.speak(utterance);
-                    });
-                } else {
-                    window.speechSynthesis.speak(utterance);
-                }
-                
-                // Optional: Add visual feedback while speaking
-                const heroTitle = document.querySelector('.hero-title');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-        });
-
-        // Add this CSS to your existing styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
 </body>
 </html>
