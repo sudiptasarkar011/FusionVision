@@ -7,7 +7,6 @@
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
     <style>
         /* General Styles */
         :root {
@@ -267,147 +266,188 @@
     </footer>
 
     <script>
-        // Initial reviews data
-        const initialReviews = [
-            {
-                name: "Jane Doe",
-                avatar: "https://www.w3schools.com/w3images/avatar2.png",
-                content: "Fusion Vision is life-changing! The voice narration feature is incredibly helpful for navigating the world.",
-                rating: 5,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            },
-            {
-                name: "John Smith",
-                avatar: "https://www.w3schools.com/w3images/avatar1.png",
-                content: "This platform bridges the gap for visually impaired individuals to connect with others.",
-                rating: 5,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            },
-            {
-                name: "Emily Johnson",
-                avatar: "https://www.w3schools.com/w3images/avatar3.png",
-                content: "Object detection is so accurate, and the voice descriptions are spot on. Highly recommend!",
-                rating: 5,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            },
-            {
-                name: "Michael Brown",
-                avatar: "https://www.w3schools.com/w3images/avatar5.png",
-                content: "A fantastic initiative. The social media integration is a brilliant touch.",
-                rating: 4,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            },
-            {
-                name: "Sarah Wilson",
-                avatar: "https://www.w3schools.com/w3images/avatar6.png",
-                content: "The accessibility features are thoughtfully designed. Makes everyday tasks much easier.",
-                rating: 5,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            },
-            {
-                name: "David Lee",
-                avatar: "https://www.w3schools.com/w3images/avatar4.png",
-                content: "Great app for both visually impaired users and their sighted companions. Promotes inclusivity!",
-                rating: 5,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            }
-        ];
+       // Initial reviews data
+const initialReviews = [
+    {
+        name: "Jane Doe",
+        avatar: "https://www.w3schools.com/w3images/avatar2.png",
+        content: "Fusion Vision is life-changing! The voice narration feature is incredibly helpful for navigating the world.",
+        rating: 5,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    },
+    {
+        name: "John Smith",
+        avatar: "https://www.w3schools.com/w3images/avatar1.png",
+        content: "This platform bridges the gap for visually impaired individuals to connect with others.",
+        rating: 5,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    },
+    {
+        name: "Emily Johnson",
+        avatar: "https://www.w3schools.com/w3images/avatar3.png",
+        content: "Object detection is so accurate, and the voice descriptions are spot on. Highly recommend!",
+        rating: 5,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    },
+    {
+        name: "Michael Brown",
+        avatar: "https://www.w3schools.com/w3images/avatar5.png",
+        content: "A fantastic initiative. The social media integration is a brilliant touch.",
+        rating: 4,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    },
+    {
+        name: "Sarah Wilson",
+        avatar: "https://www.w3schools.com/w3images/avatar6.png",
+        content: "The accessibility features are thoughtfully designed. Makes everyday tasks much easier.",
+        rating: 5,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    },
+    {
+        name: "David Lee",
+        avatar: "https://www.w3schools.com/w3images/avatar4.png",
+        content: "Great app for both visually impaired users and their sighted companions. Promotes inclusivity!",
+        rating: 5,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    }
+];
 
-        // Function to create star rating HTML
-        function createStarRating(rating) {
-            return '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+// Function to create star rating HTML
+function createStarRating(rating) {
+    return '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+}
+
+// Function to create reaction buttons
+function createReactionButtons(reactions) {
+    return `
+        <button class="reaction-btn" data-reaction="like">
+            👍 <span class="reaction-count">${reactions.like}</span>
+        </button>
+        <button class="reaction-btn" data-reaction="love">
+            ❤️ <span class="reaction-count">${reactions.love}</span>
+        </button>
+        <button class="reaction-btn" data-reaction="smile">
+            😊 <span class="reaction-count">${reactions.smile}</span>
+        </button>
+        <button class="reaction-btn" data-reaction="wow">
+            😮 <span class="reaction-count">${reactions.wow}</span>
+        </button>
+    `;
+}
+
+// Function to render a review
+function createReviewCard(review) {
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.innerHTML = `
+        <div class="user-info">
+            <img src="${review.avatar}" alt="${review.name}" />
+            <h3>${review.name}</h3>
+        </div>
+        <p>${review.content}</p>
+        <div class="rating">${createStarRating(review.rating)}</div>
+        <div class="reactions">
+            ${createReactionButtons(review.reactions)}
+        </div>
+    `;
+    return card;
+}
+
+// Initialize reviews
+function initializeReviews() {
+    const container = document.getElementById('reviewsContainer');
+    initialReviews.forEach(review => {
+        container.appendChild(createReviewCard(review));
+    });
+}
+
+// Handle reactions
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('reaction-btn') || e.target.parentElement.classList.contains('reaction-btn')) {
+        const button = e.target.classList.contains('reaction-btn') ? e.target : e.target.parentElement;
+        const reaction = button.dataset.reaction;
+        const countSpan = button.querySelector('.reaction-count');
+        let count = parseInt(countSpan.textContent);
+        
+        if (button.classList.contains('active')) {
+            button.classList.remove('active');
+            count--;
+        } else {
+            button.classList.add('active');
+            count++;
         }
+        countSpan.textContent = count;
+    }
+});
 
-        // Function to create reaction buttons
-        function createReactionButtons(reactions) {
-            return `
-                <button class="reaction-btn" data-reaction="like">
-                    👍 <span class="reaction-count">${reactions.like}</span>
-                </button>
-                <button class="reaction-btn" data-reaction="love">
-                    ❤️ <span class="reaction-count">${reactions.love}</span>
-                </button>
-                <button class="reaction-btn" data-reaction="smile">
-                    😊 <span class="reaction-count">${reactions.smile}</span>
-                </button>
-                <button class="reaction-btn" data-reaction="wow">
-                    😮 <span class="reaction-count">${reactions.wow}</span>
-                </button>
-            `;
-        }
+// Handle new comment submission
+document.getElementById('commentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('nameInput').value;
+    const content = document.getElementById('commentInput').value;
+    const rating = parseInt(document.getElementById('ratingInput').value);
+    
+    const newReview = {
+        name: name,
+        avatar: "/api/placeholder/60/60",
+        content: content,
+        rating: rating,
+        reactions: { like: 0, love: 0, smile: 0, wow: 0 }
+    };
 
-        // Function to render a review
-        function createReviewCard(review) {
-            const card = document.createElement('div');
-            card.className = 'review-card';
-            card.innerHTML = `
-                <div class="user-info">
-                    <img src="${review.avatar}" alt="${review.name}" />
-                    <h3>${review.name}</h3>
-                </div>
-                <p>${review.content}</p>
-                <div class="rating">${createStarRating(review.rating)}</div>
-                <div class="reactions">
-                    ${createReactionButtons(review.reactions)}
-                </div>
-            `;
-            return card;
-        }
+    const container = document.getElementById('reviewsContainer');
+    const reviewCard = createReviewCard(newReview);
+    reviewCard.classList.add('new-comment');
+    container.insertBefore(reviewCard, container.firstChild);
 
-        // Initialize reviews
-        function initializeReviews() {
-            const container = document.getElementById('reviewsContainer');
-            initialReviews.forEach(review => {
-                container.appendChild(createReviewCard(review));
-            });
-        }
+    // Reset form
+    this.reset();
+});
 
-        // Handle reactions
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('reaction-btn') || e.target.parentElement.classList.contains('reaction-btn')) {
-                const button = e.target.classList.contains('reaction-btn') ? e.target : e.target.parentElement;
-                const reaction = button.dataset.reaction;
-                const countSpan = button.querySelector('.reaction-count');
-                let count = parseInt(countSpan.textContent);
-                
-                if (button.classList.contains('active')) {
-                    button.classList.remove('active');
-                    count--;
-                } else {
-                    button.classList.add('active');
-                    count++;
-                }
-                countSpan.textContent = count;
-            }
-        });
+// Initialize the page
+document.addEventListener('DOMContentLoaded', initializeReviews);
 
-        // Handle new comment submission
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('nameInput').value;
-            const content = document.getElementById('commentInput').value;
-            const rating = parseInt(document.getElementById('ratingInput').value);
-            
-            const newReview = {
-                name: name,
-                avatar: "/api/placeholder/60/60",
-                content: content,
-                rating: rating,
-                reactions: { like: 0, love: 0, smile: 0, wow: 0 }
-            };
+// Cursor trail effect
+const coords = { x: 0, y: 0 };
+const circles = document.querySelectorAll(".circle");
 
-            const container = document.getElementById('reviewsContainer');
-            const reviewCard = createReviewCard(newReview);
-            reviewCard.classList.add('new-comment');
-            container.insertBefore(reviewCard, container.firstChild);
+const colors = [
+    "#142850", "#14365f", "#13476f", "#125d80", 
+    "#107792", "#0d96a5", "#09b8b4", "#04ccb1"
+];
 
-            // Reset form
-            this.reset();
-        });
+circles.forEach(function (circle, index) {
+    circle.x = 0;
+    circle.y = 0;
+    circle.style.backgroundColor = colors[index % colors.length];
+});
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', initializeReviews);
+window.addEventListener("mousemove", function(e) {
+    coords.x = e.clientX;
+    coords.y = e.clientY;
+});
+
+function animateCircles() {
+    let x = coords.x;
+    let y = coords.y;
+
+    circles.forEach(function (circle, index) {
+        circle.style.left = x - 12 + "px";
+        circle.style.top = y - 12 + "px";
+        circle.style.scale = (circles.length - index) / circles.length;
+        circle.x = x;
+        circle.y = y;
+
+        const nextCircle = circles[index + 1] || circles[0];
+        x += (nextCircle.x - x) * 0.3;
+        y += (nextCircle.y - y) * 0.3;
+    });
+
+    requestAnimationFrame(animateCircles);
+}
+
+animateCircles();
     </script>
 </body>
 </html>

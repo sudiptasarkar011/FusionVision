@@ -4,25 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Logo.png">
-    <title>Fusion Vision</title>
-    <!-- Add Inter font -->
+    <title>Features - Fusion Vision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-   
-
+    <style>
+        /* Additional styling for the feature cards */
+        .feature-card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+        .feature-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+        }
+        .feature-description {
+            font-size: 16px;
+            color: #080808;
+            margin-top: 10px;
+        }
+        .feature-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .feature-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .feature-container .feature-card {
+            flex: 1;
+            max-width: 300px;
+            margin: 10px;
+        }
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .feature-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="header" style="background: rgba(255, 255, 255, 0.5);">
+    <header class="header">
         <div class="logo-section">
             <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
             <h1 class="brand-title">Fusion Vision</h1>
         </div>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
-            <a href="features.html" class="nav-link">Features</a>
+            <a href="features.html" class="nav-link active">Features</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <a href="reviews.html" class="nav-link">Reviews</a>
         </nav>
@@ -33,73 +74,59 @@
     </header>
 
     <main class="main-content">
-        <section class="hero-section" style="background: rgba(255, 255, 255, 0.75); padding: 10px; border-radius: 10px;">
-            <h2 class="hero-title">Fusion Vision</h2>
-            <p class="hero-subtitle">Experience real-time object detection powered by advanced AI technology.</p>
-            <div class="center-button">
-                <button class="btn-primary btn-large" id="startScanning" onclick="window.location.href='camera.html'">
-                    Start Scanning
-                    <svg class="arrow-icon" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </button>
+        <section class="hero-section">
+            <h2 class="hero-title">Platform Features</h2>
+            <p class="hero-subtitle" style="color: #121111;">Explore the innovative features that make Fusion Vision stand out in object detection and AI-powered solutions.</p>
+        </section>
+
+        <section class="feature-container">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Real-Time Object Detection</h3>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Advanced AI Models</h3>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Multi-Class Detection</h3>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Customizable Training</h3>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card">
+                <h3 class="feature-title">High Accuracy and Precision</h3>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Edge Device Support</h3>
+            </div>
+
+            <!-- Feature 7 -->
+            <div class="feature-card">
+                <h3 class="feature-title">Cloud Integration</h3>
             </div>
         </section>
+
+        <section class="tutorial-section" class="tutorial-section" style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+            <h2 style="font-size: 2rem; font-weight: bold;">Tutorial</h2>
+            <p style="font-size: 1.2rem; font-weight: 500;">Follow the simple steps to get started with Fusion Vision.</p>
+            <ul>
+                <li>Step 1: Launch the platform by scanning objects around you.</li>
+                <li>Step 2: Choose features such as real-time detection or training a custom model.</li>
+                <li>Step 3: Start analyzing results and exploring object insights.</li>
+            </ul>
+            <p>For further assistance, Contact us <a href="contact.html">Help Center</a>.</p>
+        </section>
     </main>
-
-    <!-- Modern Modal Design -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Welcome Back</h2>
-                <button class="close-button" onclick="closeModal('loginModal')">&times;</button>
-            </div>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Sign In</button>
-                <p class="form-footer">
-                    Don't have an account? 
-                    <a href="#" onclick="switchModal('loginModal', 'registerModal')">Sign up</a>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create Account</h2>
-                <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
-            </div>
-            <form id="registerForm" class="auth-form">
-                <div class="form-group">
-                    <label for="registerName">Name</label>
-                    <input type="text" id="registerName" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" placeholder="Create a password" required>
-                    <div class="password-strength" id="passwordStrength"></div>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Create Account</button>
-                <p class="form-footer">
-                    Already have an account? 
-                    <a href="#" onclick="switchModal('registerModal', 'loginModal')">Sign in</a>
-                </p>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
@@ -134,7 +161,7 @@
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-twitter"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
             </ul>
           </div>
@@ -146,59 +173,7 @@
       </footer>
 
     <script>
-        window.addEventListener('load', () => {
-            // Stop speech synthesis when the page is unloaded
-            window.addEventListener('beforeunload', () => {
-                window.speechSynthesis.cancel();
-            });
-            // Small delay to ensure voices are loaded
-            setTimeout(() => {
-                const welcomeMessage = "Welcome to Fusion Vision, Start Scanning objects around you and know about your surroundings with us";
-                const utterance = new SpeechSynthesisUtterance(welcomeMessage);
-                
-                // Get available voices and select a female voice
-                const voices = window.speechSynthesis.getVoices();
-                const femaleVoice = voices.find(voice => 
-                    voice.name.includes('female') || 
-                    voice.name.includes('Female') || 
-                    voice.name.includes('Samantha') ||
-                    voice.name.includes('Google UK English Female')
-                );
-                
-                // Configure the voice
-                utterance.voice = femaleVoice;
-                utterance.lang = 'en-IN';
-                utterance.rate = 0.9;  // Slightly slower for clarity
-                utterance.pitch = 1.2; // Slightly higher pitch for female voice
-                utterance.volume = 1;  // Full volume
-                
-                // Ensure voices are loaded before speaking
-                if (window.speechSynthesis.getVoices().length === 0) {
-                    window.speechSynthesis.addEventListener('voiceschanged', () => {
-                        window.speechSynthesis.speak(utterance);
-                    });
-                } else {
-                    window.speechSynthesis.speak(utterance);
-                }
-                
-                // Optional: Add visual feedback while speaking
-                const heroTitle = document.querySelector('.hero-title');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-        });
-
-        // Add this CSS to your existing styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
+        // Optional: Additional JavaScript functionality for modals, interactions, etc.
     </script>
 
     <!-- cursor trail effect code -->
@@ -284,6 +259,5 @@ animateCircles();
 
 
     </script>
-
 </body>
 </html>
