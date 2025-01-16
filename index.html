@@ -10,7 +10,188 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Chatbot Styles */
+        .chat-button {
+        position: fixed;
+        bottom: 30px; /* Slightly higher for visibility */
+        right: 30px; /* Added margin from edges */
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 70px; /* Increased size */
+        height: 70px; /* Increased size */
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px; /* Increased font size */
+        z-index: 1000;
+        }
 
+        .chat-button:hover {
+            background: #0056b3;
+        }
+
+        /* Ensure Footer is at Bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .chat-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+
+        .chat-popup {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 400px; /* Increased width */
+            height: 550px; /* Increased height */
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease-in-out;
+            z-index: 1000;
+        }
+        .chat-header {
+            padding: 15px;
+            background: #007bff;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: #e9ecef;
+            color: black;
+        }
+
+        .input-container {
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .send-button {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .typing-indicator {
+            padding: 10px;
+            color: #666;
+            background: #fff;
+            border-top: 1px solid #dee2e6;
+            display: none;
+        }
+
+    </style>
 </head>
 <body>
     <header class="header" style="background: rgba(255, 255, 255, 0.5);">
@@ -45,6 +226,24 @@
             </div>
         </section>
     </main>
+    
+    <button class="chat-button" onclick="toggleChat()">💬</button>
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <span>AI Chatbot</span>
+            <button onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="typing-indicator" id="typing-indicator">
+            Bot is typing...
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button class="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
     <!-- Scroll-to-Top Button -->
     <button id="scrollToTopBtn" class="scroll-to-top" title="Go to top">↑</button>
@@ -201,6 +400,109 @@
             }
         `;
         document.head.appendChild(style);
+
+        const GROQ_API_KEY = 'add-key-here';
+        const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+
+        // Store chat history
+        let chatHistory = [];
+
+        // Chat UI functions
+        function toggleChat() {
+            const chatPopup = document.getElementById('chat-popup');
+            chatPopup.style.display = chatPopup.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function addMessage(role, content) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(role === 'user' ? 'user-message' : 'bot-message');
+            messageDiv.textContent = content;
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function handleChatbotResponse(userMessage) {
+            const typingIndicator = document.getElementById('typing-indicator');
+
+            // Add user message to chat history
+            chatHistory.push({
+                role: 'user',
+                content: userMessage
+            });
+
+            // Show typing indicator
+            typingIndicator.style.display = 'block';
+
+            try {
+                const response = await fetch(GROQ_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${GROQ_API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'llama-3.3-70b-versatile',
+                        messages: chatHistory,
+                        temperature: 0.7,
+                        max_tokens: 1024
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const data = await response.json();
+                const botResponse = data.choices[0].message.content;
+
+                // Add bot response to chat history
+                chatHistory.push({
+                    role: 'assistant',
+                    content: botResponse
+                });
+
+                // Add bot message to chat
+                addMessage('bot', botResponse);
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('bot', 'Sorry, I encountered an error. Please try again.');
+            } finally {
+                // Hide typing indicator
+                typingIndicator.style.display = 'none';
+            }
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+
+            if (message) {
+                // Display user message
+                addMessage('user', message);
+                
+                // Clear input
+                userInput.value = '';
+
+                // Get bot response
+                handleChatbotResponse(message);
+            }
+        }
+
+        // Add event listener for Enter key
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize with welcome message
+        window.addEventListener('load', () => {
+            addMessage('bot', 'Hello! How can I help you today?');
+        });
+
     </script>
     <script src="script.js"></script>
 </body>
