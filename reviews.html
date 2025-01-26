@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fusion Vision - User Reviews</title>
     <link rel="icon" href="Logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
     <style>
         /* General Styles */
         body {
@@ -35,13 +39,6 @@
         main {
             padding: 2rem;
         }
-        footer {
-            text-align: center;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 1rem 0;
-        }
-
         /* Reviews Section Styles */
         .reviews-section {
             text-align: center;
@@ -128,36 +125,52 @@
     </style>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Fusion Vision Logo" />
-        <h1>Fusion Vision</h1>
-        <p>Fusion Vision is an advanced object detection platform that leverages cutting-edge AI technology to provide real-time object recognition and analysis.</p>
+   <header class="header" style="background: rgba(255, 255, 255, 0.5);">
+        <div class="logo-section">
+            <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
+            <h1 class="brand-title">Fusion Vision</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="features.html" class="nav-link">Features</a>
+
+<a href="contact.html" class="nav-link">Contact</a>
+            
+            <a href="reviews.html" class="nav-link active">Reviews</a>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn-secondary" id="loginButton" fdprocessedid="p7lv7">Sign In</button>
+            <button class="btn-primary" id="registerButton" fdprocessedid="mplky8">Get Started</button>
+        </div>
     </header>
+    <br>
+    <br>
 
     <main>
         <section class="reviews-section">
             <h2>User Reviews</h2>
             <div class="reviews-container">
                 <div class="review-card">
-                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Jane Doe" />
+                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Jane Doe">
                     <h3>Jane Doe</h3>
                     <p>"Fusion Vision is life-changing! The voice narration feature is incredibly helpful for navigating the world."</p>
                     <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
                 </div>
                 <div class="review-card">
-                    <img src="https://www.w3schools.com/w3images/avatar1.png" alt="John Smith" />
+                    <img src="https://www.w3schools.com/w3images/avatar1.png" alt="John Smith">
                     <h3>John Smith</h3>
                     <p>"This platform bridges the gap for visually impaired individuals to connect with others."</p>
                     <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
                 </div>
                 <div class="review-card">
-                    <img src="https://www.w3schools.com/w3images/avatar3.png" alt="Emily Johnson" />
+                    <img src="https://www.w3schools.com/w3images/avatar3.png" alt="Emily Johnson">
                     <h3>Emily Johnson</h3>
                     <p>"Object detection is so accurate, and the voice descriptions are spot on. Highly recommend!"</p>
                     <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
                 </div>
                 <div class="review-card">
-                    <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Michael Brown" />
+                    <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Michael Brown">
                     <h3>Michael Brown</h3>
                     <p>"A fantastic initiative. The social media integration is a brilliant touch."</p>
                     <p class="rating">Rating: ⭐⭐⭐⭐☆</p>
@@ -169,15 +182,56 @@
         <section class="comment-section">
             <h3>Leave a Comment</h3>
             <form class="comment-form">
-                <input type="text" placeholder="Your Name" required />
-                <textarea placeholder="Your Comment" rows="5" required></textarea>
-                <button type="submit">Submit Comment</button>
+                <input type="text" placeholder="Your Name" required="" fdprocessedid="4ir4cu">
+                <textarea placeholder="Your Comment" rows="5" required=""></textarea>
+                <button type="submit" fdprocessedid="rngm6m">Submit Comment</button>
             </form>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Fusion Vision. Empowering the visually impaired.</p>
-    </footer>
-</body>
-</html>
+     <footer>
+        <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
+          <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <img src="Logo.png" alt="Fusion Vision Logo" style="width: 100px; margin-right: 20px;">
+            <p style="margin: 0;">Fusion Vision is an advanced object detection platform that leverages cutting-edge AI technology to provide real-time object recognition and analysis.</p>
+          </div>
+      
+          <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Fusion Vision</h2>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+              <li><a href="contact.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="privacyp.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+              <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+            <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="footer-bottom" style="padding: 10px; text-align: center; background-color: white;">
+          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Fusion Vision. All rights reserved.</p>
+        </div>
+      </footer>
+
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
