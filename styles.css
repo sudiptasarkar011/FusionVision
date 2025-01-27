@@ -580,9 +580,9 @@ body {
 
 footer {
     background: rgba(255, 255, 255, 0.6);
-    padding: 20px 0;
-    margin: 20px;
-    border-radius: 10px;
+    padding: -30px 0;
+    margin: 80px;
+    border-radius: 25px;
     font-family: 'Arial', sans-serif;
     color: #6c757d;
   }
@@ -705,6 +705,8 @@ footer {
     padding: 20px 0;
     background-color: #e9ecef;
     font-size: 14px;
+    border-radius: 25px;
+    margin-top: -10px ;
   }
 
 /* Styles for the Scroll-to-Top Button */
@@ -736,3 +738,27 @@ footer {
   .scroll-to-top:active {
     transform: scale(1);
   }
+
+  .header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.about-section {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+footer {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+  
