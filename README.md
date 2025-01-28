@@ -122,6 +122,10 @@ Here are some screenshots of the application:
 
   ![SWOC](swoc.jpg)
 
+- **InnoGeeks Winter of Code**
+
+  ![IWOC](iwoc.png)
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
