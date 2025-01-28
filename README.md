@@ -120,7 +120,7 @@ Here are some screenshots of the application:
 
 - **Social Winter Of Code 2025**
 
-  ![SWOC](swoc.jpg)
+  ![SWOC](swoc.png)
 
 - **InnoGeeks Winter of Code**
 
