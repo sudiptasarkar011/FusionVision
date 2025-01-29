@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="loginpage.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="bg">
+            <!-- style="background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 10px; margin-left: 35%; margin-top: 15%; -->
+        <div class="box">
+            <div class="image">
+                <img src="Logo.png" width="100px" height="100px">
+            </div>
+            <h2>Sign In</h2>
+            <div class="input-boxes">
+                <label for="e-mail">
+                <input type="email" id="e-mail" required />
+                <span class="placeholder">Email</span>
+                <span class="border"></span>
+                <i class="fa-solid fa-user"></i>
+            </label>
+            </div>
+            <div class="input-boxes">
+                <label for="password">
+                <input type="password" id="password" required />
+                <span class="placeholder">Password</span>
+                <span class="border"></span>
+                <i class="fa-solid fa-lock"></i>
+            </label>
+            </div>
+            <div class="check">
+                <div class="check-group">
+                <input type="checkbox" class="login-check">
+                <label for="" class="check-label">Remember Me</label>
+                </div>
+                <a href="#" class="forgot">Forget Password?</a>
+            </div>
+            <div class="submit">
+                <button type="submit">Sign In</button>
+            </div>  
+                <div class="social">
+                    <div class="heading">
+                        <h5>Or Signin Using</h5>
+                    </div>
+                    <ul class="icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+                        <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='blue'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-google"></i></a></li>
+                    </ul>
+                    <div class="signup">
+                        <h5>Or Signup Using</h5>
+                    </div>
+                    <a href="#" class="create">SIGN UP</a>
+                </div>
+            </div>
+        </div>    
+</body>
+</html>

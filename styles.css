@@ -79,8 +79,8 @@ body {
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--text-color);
+    background: var(--primary-color);
+    color: white;
     border: 1px solid var(--gray);
 }
 

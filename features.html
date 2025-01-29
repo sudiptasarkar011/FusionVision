@@ -53,6 +53,11 @@
             }
         }
     </style>
+        <script>
+            function signin() {
+                window.location.href="login page.html"
+            }
+        </script>
 </head>
 <body>
     <header class="header">
@@ -68,7 +73,7 @@
             <a href="reviews.html" class="nav-link">Reviews</a>
         </nav>
         <div class="auth-buttons">
-            <button class="btn-secondary" id="loginButton">Sign In</button>
+            <button class="btn-secondary" id="loginButton" onclick="signin()">Sign In</button>
             <button class="btn-primary" id="registerButton">Get Started</button>
         </div>
     </header>
