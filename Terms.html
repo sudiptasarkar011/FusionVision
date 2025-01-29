@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Logo.png">
-    <title>Fusion Vision</title>
-    <!-- Add Inter font -->
+    <title>Terms of Service- Fusion Vision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-
 </head>
 <body>
-    <header class="header" style="background: rgba(168, 173, 200, 0.9);">
+    <header class="header" style="background: rgba(255, 255, 255, 0.5);">
         <div class="logo-section">
             <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
             <h1 class="brand-title">Fusion Vision</h1>
         </div>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="features.html" class="nav-link">Features</a>
             <a href="contact.html" class="nav-link">Contact</a>
@@ -32,76 +28,45 @@
     </header>
 
     <main class="main-content">
-        <section class="hero-section" style="background: rgba(255, 255, 255, 0.75); padding: 10px; border-radius: 10px;">
-            <h2 class="hero-title">Fusion Vision</h2>
-            <p class="hero-subtitle">Experience real-time object detection powered by advanced AI technology.</p>
-            <div class="center-button">
-                <button class="btn-primary btn-large" id="startScanning" onclick="window.location.href='camera.html'">
-                    Start Scanning
-                    <svg class="arrow-icon" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </button>
-            </div>
+        <section class="privacy-policy" style="background: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 10px; margin: 20px;">
+            <h2 class="section-title">Terms of Service</h2>
+            <p style="line-height: 1.8; margin-bottom: 20px;">
+                Welcome to <strong>FUSIONVISION</strong>. By accessing or using our website, you agree to comply with these Terms of Service. Please read them carefully to understand your rights and responsibilities.
+            </p>
+            <h3 style="margin-top: 20px;">1. Acceptance of Terms</h3>
+            <p style="line-height: 1.8;">By using this platform, you agree to these Terms and Service. If you do not agree to any part of these terms, please discontinue use of the website.</p>
+
+            <h3 style="margin-top: 20px;">2. Use of the Platform</h3>
+            <p style="line-height: 1.8;">We grant you a limited, non-exclusive, and non-transferable license to use our platform for personal, non-commercial purposes. Any unauthorized use of the platform is strictly prohibited.</p>
+
+            <h3 style="margin-top: 20px;">3. Intellectual Property</h3>
+            <p style="line-height: 1.8;">All content on <strong>FUSIONVISION</strong>, including text, images, logos, and designs, is the property of the platform and protected by copyright laws. You may not reproduce, distribute, or create derivative works without prior written consent.</p>
+
+            <h3 style="margin-top: 20px;">4. User Responsibilities</h3>
+            <p style="line-height: 1.8;">As a user of this platform, you agree to:</p>
+            <ul>
+                <li>Provide accurate and truthful information when registering or submitting content.</li>
+                <li>Not engage in unlawful, harmful, or disruptive activities on the platform.</li>
+                <li>Respect the intellectual property rights of the platform and other users.</li>
+              </ul>
+              
+
+            <h3 style="margin-top: 20px;">5. Limitation of Liability</h3>
+            <p style="line-height: 1.8;"><strong>FUSIONVISION</strong> is not responsible for any indirect, incidental, or consequential damages arising from your use of the platform. All services are provided "as is" without warranties of any kind.</p>
+            
+
+            <h3 style="margin-top: 20px;">6. Modifications to Terms</h3>
+            <p style="line-height: 1.8;">We reserve the right to modify these Terms and Service at any time. Updates will be posted on this page, and continued use of the platform signifies your acceptance of the revised terms.</p>
+
+            <h3 style="margin-top: 20px;">7. Termination</h3>
+            <p style="line-height: 1.8;">We reserve the right to suspend or terminate your access to the platform at our sole discretion, without prior notice, for any violation of these Terms. </p>
+
+            <h3 style="margin-top: 20px;">8. Contact Us</h3>
+            <p style="line-height: 1.8;">If you have any questions about these Terms and Service, please contact us at <a href="mailto:info@fusionvision.com" style="color: #e67e22; text-decoration: none;">info@fusionvision.com</a>.</p>
+        </div>
+        </p>
         </section>
     </main>
-
-    <!-- Scroll-to-Top Button -->
-    <button id="scrollToTopBtn" class="scroll-to-top" title="Go to top">↑</button>
-
-    <!-- Modern Modal Design -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Welcome Back</h2>
-                <button class="close-button" onclick="closeModal('loginModal')">&times;</button>
-            </div>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Sign In</button>
-                <p class="form-footer">
-                    Don't have an account? 
-                    <a href="#" onclick="switchModal('loginModal', 'registerModal')">Sign up</a>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create Account</h2>
-                <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
-            </div>
-            <form id="registerForm" class="auth-form">
-                <div class="form-group">
-                    <label for="registerName">Name</label>
-                    <input type="text" id="registerName" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" placeholder="Create a password" required>
-                    <div class="password-strength" id="passwordStrength"></div>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Create Account</button>
-                <p class="form-footer">
-                    Already have an account? 
-                    <a href="#" onclick="switchModal('registerModal', 'loginModal')">Sign in</a>
-                </p>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
@@ -136,7 +101,7 @@
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-twitter"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
             </ul>
           </div>
@@ -147,61 +112,88 @@
         </div>
       </footer>
 
-    <script>
-        window.addEventListener('load', () => {
-            // Stop speech synthesis when the page is unloaded
-            window.addEventListener('beforeunload', () => {
-                window.speechSynthesis.cancel();
-            });
-            // Small delay to ensure voices are loaded
-            setTimeout(() => {
-                const welcomeMessage = "Welcome to Fusion Vision, Start Scanning objects around you and know about your surroundings with us";
-                const utterance = new SpeechSynthesisUtterance(welcomeMessage);
-                
-                // Get available voices and select a female voice
-                const voices = window.speechSynthesis.getVoices();
-                const femaleVoice = voices.find(voice => 
-                    voice.name.includes('female') || 
-                    voice.name.includes('Female') || 
-                    voice.name.includes('Samantha') ||
-                    voice.name.includes('Google UK English Female')
-                );
-                
-                // Configure the voice
-                utterance.voice = femaleVoice;
-                utterance.lang = 'en-IN';
-                utterance.rate = 0.9;  // Slightly slower for clarity
-                utterance.pitch = 1.2; // Slightly higher pitch for female voice
-                utterance.volume = 1;  // Full volume
-                
-                // Ensure voices are loaded before speaking
-                if (window.speechSynthesis.getVoices().length === 0) {
-                    window.speechSynthesis.addEventListener('voiceschanged', () => {
-                        window.speechSynthesis.speak(utterance);
-                    });
-                } else {
-                    window.speechSynthesis.speak(utterance);
-                }
-                
-                // Optional: Add visual feedback while speaking
-                const heroTitle = document.querySelector('.hero-title');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-        });
-
-        // Add this CSS to your existing styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-    <script src="script.js"></script>
+      <!-- cursor trail effect code -->
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <style>
+      .circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: black;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999; /* so that it stays on top of all other elements */
+  }
+    </style>
+      
+      <script>
+          const coords = { x: 0, y: 0 };
+  const circles = document.querySelectorAll(".circle");
+  
+  const colors = [
+  "#142850", "#14365f", "#13476f", "#125d80", "#107792", "#0d96a5", "#09b8b4", "#04ccb1"
+  ];
+  
+  circles.forEach(function (circle, index) {
+  circle.x = 0;
+  circle.y = 0;
+  circle.style.backgroundColor = colors[index % colors.length];
+  });
+  
+  window.addEventListener("mousemove", function(e){
+  coords.x = e.clientX;
+  coords.y = e.clientY;
+  
+  });
+  
+  function animateCircles() {
+  
+  let x = coords.x;
+  let y = coords.y;
+  
+  circles.forEach(function (circle, index) {
+  circle.style.left = x - 12 + "px";
+  circle.style.top = y - 12 + "px";
+  
+  circle.style.scale = (circles.length - index) / circles.length;
+  
+  circle.x = x;
+  circle.y = y;
+  
+  const nextCircle = circles[index + 1] || circles[0];
+  x += (nextCircle.x - x) * 0.3;
+  y += (nextCircle.y - y) * 0.3;
+  });
+  
+  requestAnimationFrame(animateCircles);
+  }
+  
+  animateCircles();
+  
+  
+      </script>
 </body>
 </html>

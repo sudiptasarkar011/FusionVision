@@ -5,7 +5,7 @@ A real-time object detection system with voice narration capabilities. The aim i
 
 ## Features
 
-- Real-time object detection using TensorFlow and YOLOv8
+- Real-Time Object Detection: Utilizes Coco-SSD (TensorFlow.js) for live object detection.
 - Voice narration of detected objects
 - Web-based interface for easy access
 - Unique Social Media Platform for the visually impaired
@@ -20,8 +20,8 @@ Follow these instructions to set up the project on your local machine.
 
 Ensure you have the following installed:
 
-- **Python** (>=3.7)
 - **Node.js** (for web dependencies)
+- **MongoDB**
 
 ### Installation
 
@@ -31,42 +31,44 @@ Ensure you have the following installed:
    cd fusion-vision
    ```
 
-2. **Install Python dependencies:**
+2. **Install Dependencies**
 
-   Create a virtual environment and activate it:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-
-   Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Install Node.js dependencies:**
-
-   Navigate to the web directory and install dependencies:
-   ```bash
-   cd web
    npm install
    ```
+
+3. **Set Up the Database**
+
+- Ensure MongoDB is running locally or configure a remote MongoDB instance.
+- Create `.env` file with the following content:
+
+  ```bash
+  MONGODB_URI=mongodb://localhost:27017/camera-app
+  PORT=5000
+  DB_HOST=localhost
+  DB_USER=root
+  DB_PASSWORD=your_password_here
+  DB_NAME=fusion_vision
+  ```
+
+4. **Start the Server**:
+
+```bash
+node server.js
+```
+
+5. **Launch the web interface:**
+
+   Open `index.html` in a modern web browser.
 
 ### Dependencies
 
 #### Core Requirements
 
 - **TensorFlow** (>=2.0.0)
-  - Deep learning framework for object detection
-  - Used for running the COCO-SSD model
+  - Deep learning framework for object detection.
+  - Used for running the COCO-SSD model.
 
-- **OpenCV** (>=4.8.0)
-  - Computer vision library
-  - Handles camera input and image processing
-
-- **YOLOv8**
-  - Advanced object detection model
-  - Provides enhanced accuracy
 
 #### Web Technologies
 
@@ -87,6 +89,7 @@ Ensure you have the following installed:
   - JavaScript enabled
   - Web Speech API support
 
+---
 ### Accessibility Permissions
 
 To ensure the application functions correctly, you need to grant the following permissions in your web browser:
@@ -94,22 +97,6 @@ To ensure the application functions correctly, you need to grant the following p
 - **Camera Access**: Required for capturing images and performing real-time object detection.
 - **Microphone Access**: Needed if the application includes voice input features.
 - **Speech Synthesis**: Ensure your browser allows speech synthesis for voice narration of detected objects.
-
-Make sure to check your browser settings and grant these permissions when prompted.
-
-### Running the Application
-
-1. **Start the backend server:**
-   ```bash
-   python app.py
-   ```
-
-2. **Launch the web interface:**
-
-   Open `index.html` in a modern web browser.
-
-
-
 
 ## Screenshots
 
@@ -133,7 +120,11 @@ Here are some screenshots of the application:
 
 - **Social Winter Of Code 2025**
 
-  ![SWOC](swoc.jpg)
+  ![SWOC](swoc.png)
+
+- **InnoGeeks Winter of Code**
+
+  ![IWOC](iwoc.png)
 
 ## Contributing
 
