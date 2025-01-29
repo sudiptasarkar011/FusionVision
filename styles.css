@@ -757,3 +757,154 @@ footer {
   .scroll-to-top:active {
     transform: scale(1);
   }
+
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f4f4; /* Light background for contrast */
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    width: 500px; /* Increased width for better spacing */
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Align Labels & Inputs in One Line */
+.input-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.input-box label {
+    font-size: 16px;
+    color: #333;
+    min-width: 80px; /* Ensures labels are aligned */
+}
+.input-box input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+/* Input Hover & Focus Effects */
+.input-box input:hover {
+    border-color: #007BFF;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+.input-box input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 86, 179, 0.6);
+    outline: none;
+}
+
+/* Error Message Styling */
+.error-message {
+    display: none;
+    color: #e74c3c;
+    font-size: 12px;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Button Styling */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+.btn:active {
+    background: #004494;
+    transform: scale(0.95);
+}
+
+/* Signup Link */
+.signup-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.signup-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(168, 173, 200,0.9);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.back-btn {
+    background: #007BFF;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 15px;
+}
+
+.back-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.back-btn:active {
+    background: #004494;
+    transform: scale(0.98);
+}
+
+.back-btn i {
+    margin-right: 8px; /* Space between icon and text */
+}
