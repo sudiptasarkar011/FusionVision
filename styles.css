@@ -208,6 +208,7 @@ body {
     text-align: center;
     padding: 2rem;
     color: var(--gray);
+    margin-bottom: 0;
 }
 
 /* Responsive Design */
@@ -601,7 +602,7 @@ body {
 footer {
     background: rgba(255, 255, 255, 0.6);
     padding: 20px 0;
-    margin: 20px;
+    margin: 100px;
     border-radius: 10px;
     font-family: 'Arial', sans-serif;
     color: #6c757d;
