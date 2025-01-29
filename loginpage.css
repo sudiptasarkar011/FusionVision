@@ -10,15 +10,6 @@
 }
 
 .bg {
-  /* height: 100vh;
-  width: 100%;
-  background: linear-gradient(45deg, gray, #0047f3, #0070f3, whitesmoke);
-  background-size: 300% 300%;
-  animation: color 5s ease-in-out infinite;
-  align-items: center;
-  justify-content: center;
-  display: flex; */
-  /* #004da7 */
   height: 100vh;
   width: 100%;
   background: var(--background-color) url('FusionVision_BG_blurred.jpg') no-repeat center center fixed;
@@ -32,17 +23,6 @@
   align-items: center;
   justify-content: center;
 }
-/* @keyframes color {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-} */
 
 .box {
     height: 700px;
@@ -80,24 +60,6 @@ h2 {
     font-family: 'Inter', sans-serif;
 }
 
-/* label {
-    margin-top: 30px;
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-input {
-    margin-top: 20px;
-    width: 300px;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid black;
-    border-radius: 4px;
-} */
-
-
- /* start */
 .input-boxes {
     margin-top: 20px;
     position: relative;
