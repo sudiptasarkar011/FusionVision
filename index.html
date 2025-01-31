@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-
+    <script>
+        function signin() {
+            window.location.href="login page.html"
+        }
+    </script>
 </head>
 <body>
     <header class="header" style="background: rgba(168, 173, 200, 0.9);">
@@ -26,7 +30,7 @@
             <a href="reviews.html" class="nav-link">Reviews</a>
         </nav>
         <div class="auth-buttons">
-            <button class="btn-secondary" id="loginButton">Sign In</button>
+            <button class="btn-secondary" id="loginButton" onclick="signin()">Sign In</button>
             <button class="btn-primary" id="registerButton">Get Started</button>
         </div>
     </header>
