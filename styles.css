@@ -17,7 +17,7 @@
 }
 
 body {
-    background: var(--background-color) url('FusionVision_BG_blurred.jpg') no-repeat center center fixed;
+    background: var(--background-color) url('https://ryansechrest.com/content/images/2022/08/nodes.gif') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-color);
     line-height: 1.6;
@@ -93,9 +93,12 @@ body {
 }
 
 .main-content {
+   
+    align-items: center;
     padding: 8rem 2rem 4rem;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
+    
 }
 
 .hero-section {
