@@ -3,62 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Logo.png">
-    <title>Features - Fusion Vision</title>
+    <title>Who We Are - FusionVision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Additional styling for the feature cards */
-        body{
-            color:white;
-        }
-        .hero-title{
-            color: azure;
-        }
-        .feature-card {
-        
-            padding: 50px;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: scale(1.05);
-        }
-        .feature-title {
-            font-size: 22px;
-            font-weight: 600;
-            
-        }
-        .feature-description {
-            font-size: 16px;
-        
-            margin-top: 10px;
-        }
-        .feature-card img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .feature-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .feature-container .feature-card {
-            flex: 1;
-            max-width: 300px;
-            margin: 10px;
-        }
-        /* Ensure responsiveness */
-        @media (max-width: 768px) {
-            .feature-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
 <body>
     <header class="header">
@@ -69,76 +17,57 @@
         <nav class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
-            <a href="features.html" class="nav-link active">Features</a>
+            <a href="features.html" class="nav-link">Features</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <a href="reviews.html" class="nav-link">Reviews</a>
         </nav>
         <div class="auth-buttons">
-            <button class="btn-secondary" id="loginButton" onclick="window.location.href='signIn.html'">Sign In</button>
+            <button class="btn-secondary" id="loginButton">Sign In</button>
             <button class="btn-primary" id="registerButton">Get Started</button>
         </div>
     </header>
 
     <main class="main-content">
-        <section class="hero-section">
-            <h2 class="hero-title">Platform Features</h2>
-            <p class="hero-subtitle" style="color:white;">Explore the innovative features that make Fusion Vision stand out in object detection and AI-powered solutions.</p>
-        </section>
+        <section class="who-we-are" style="background: rgba(255, 255, 255, 0.8); padding: 25px; padding-bottom: 40px;  border-radius: 10px; margin: 20px;">
+            <div class="container">
+                <h1>Ensuring Video Content Integrity: How FusionVision is Leading the Way</h1>
+                <div class="section">
+                  <h2>Introduction</h2>
+                  <p>In today’s fast-paced digital world, the authenticity of video content is more critical than ever. With the rise of deepfakes and manipulated media, trust in what we see online is being tested. At FusionVision, we’re on a mission to ensure the integrity of video content and provide solutions that help businesses and individuals verify what they’re watching is real.</p>
+                </div>
+                <div class="section">
+                  <h2>The Challenge of Fake Video Content</h2>
+                  <p>Videos are powerful, but their ability to be altered presents a major risk. Fake videos can mislead, spread misinformation, and damage reputations. As video content becomes an essential part of how we communicate, the need for reliable ways to verify authenticity grows.
+                </p>
+                </div>
+                <div class="section">
+                  <h2> FusionVision’s Solution</h2>
+                    <p>At <strong>FusionVision</strong>, we use advanced AI, machine learning, and blockchain technology to verify the authenticity of videos. Our platform detects manipulation, tracks the origin of footage, and ensures content hasn’t been tampered with — giving users confidence in the videos they view and share.</p>
+                </div>
+                <div class="section">
+                  <h2>Why It Matters</h2>
+                  <p>
+                    In an era where videos shape opinions and influence decisions, the importance of maintaining trust is paramount. With <strong>FusionVision’s </strong>technology, we’re making it easier for organizations and individuals to protect themselves from manipulated content and ensure that what they see online is trustworthy.
 
-        <section class="feature-container">
-            <!-- Feature 1 -->
-            <div class="feature-card">
-                <h3 class="feature-title">Real-Time Object Detection</h3>
+                  </p>
+                </div>
+                <div class="section">
+                  <h2> Conclusion</h2>
+                  <p>The future of video content is bright, but only if we prioritize authenticity. At FusionVision, we’re leading the charge to ensure that the digital content we consume is real, transparent, and reliable. Join us in making the digital world a more truthful place.
+                </p>
+                </div>
             </div>
-
-            <!-- Feature 2 -->
-            <div class="feature-card">
-                <h3 class="feature-title">Advanced AI Models</h3>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="feature-card">
-                <h3 class="feature-title">Multi-Class Detection</h3>
-            </div>
-
-            <!-- Feature 4 -->
-            <div class="feature-card">
-                <h3 class="feature-title">Customizable Training</h3>
-            </div>
-
-            <!-- Feature 5 -->
-            <div class="feature-card">
-                <h3 class="feature-title">High Accuracy and Precision</h3>
-            </div>
-
-            <!-- Feature 6 -->
-            <div class="feature-card">
-                <h3 class="feature-title">Edge Device Support</h3>
-            </div>
-
-            <!-- Feature 7 -->
-            <div class="feature-card">
-                <h3 class="feature-title">Cloud Integration</h3>
-            </div>
-        </section>
-
-        <section class="tutorial-section" class="tutorial-section" style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
-            <h2 style="font-size: 2rem; font-weight: bold;">Tutorial</h2>
-            <p style="font-size: 1.2rem; font-weight: 500;">Follow the simple steps to get started with Fusion Vision.</p>
-            <ul>
-                <li>Step 1: Launch the platform by scanning objects around you.</li>
-                <li>Step 2: Choose features such as real-time detection or training a custom model.</li>
-                <li>Step 3: Start analyzing results and exploring object insights.</li>
-            </ul>
-            <p>For further assistance, Contact us <a href="contact.html">Help Center</a>.</p>
+            <!-- <footer>
+                &copy; 2025 FusionVision. All rights reserved.
+            </footer> -->
         </section>
     </main>
-
-    <footer style="margin-bottom:0; margin-left: 0; margin-right: 0;">
+    <!-- footer section -->
+      <footer style="margin-bottom: 0rem; margin-left: 0rem; margin-right: 0rem;">
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background: rgba(255, 255, 255, 0); color: black;">
           <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <img src="Logo.png" alt="Fusion Vision Logo" style="width: 100px; margin-right: 20px;">
-            <p style="margin: 0;">Fusion Vision is an advanced object detection platform that leverages cutting-edge AI technology to provide real-time object recognition and analysis.</p>
+            <p style="margin: 0;">Fusion Vision is an advanced object detection platform that leverages cutting-edge AI technology to p0rovide real-time object recognition and analysis.</p>
           </div>
       
           <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
@@ -157,9 +86,9 @@
             <ul style="list-style: none; padding: 0;">
               <li><a href="privacyp.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
               <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
-              <li><a href="Terms.html" color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+              <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
             </ul>
-          </div>
+          </div>                                                                                                                                                                                                                                                                 
       
           <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
             <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
@@ -167,19 +96,15 @@
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
               <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
             </ul>
           </div>
         </div>
       
         <div class="footer-bottom" style="padding: 10px; text-align: center; background-color: white;">
-          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Fusion Vision. All rights reserved.</p>
+          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Fusion Vision. All rights reserved.</p>
         </div>
       </footer>
-
-    <script>
-        // Optional: Additional JavaScript functionality for modals, interactions, etc.
-    </script>
 </body>
 </html>
