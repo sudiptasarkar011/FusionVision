@@ -758,12 +758,13 @@ footer {
     transform: scale(1);
   }
 
-.center-wrapper {
+ .center-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f4f4f4; /* Light background for contrast */
+    background: var(--background-color) url('FusionVision_BG_blurred.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .container {
