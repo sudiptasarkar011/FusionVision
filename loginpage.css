@@ -8,7 +8,7 @@
   --radius: 8px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
+/* background */
 .bg {
   height: 100vh;
   width: 100%;
@@ -24,6 +24,7 @@
   justify-content: center;
 }
 
+/* sign in box */
 .box {
     height: 700px;
     width: 400px;
@@ -33,6 +34,7 @@
     border-radius: 4px;
 }
 
+/* logo */
 .image {
   height: 120px;
   width: 100%;
@@ -51,6 +53,7 @@
   scale: 1.2;
 }
 
+/* sign in heading */
 h2 {
     text-align: center;
     margin-top: 30px;
@@ -60,6 +63,7 @@ h2 {
     font-family: 'Inter', sans-serif;
 }
 
+/* input boxes */
 .input-boxes {
     margin-top: 20px;
     position: relative;
@@ -167,6 +171,7 @@ h2 {
     height 0.3s ease 0.9s;
 }
 
+/* checkbox */
 .check,
 .check-group {
   display: flex;
@@ -186,6 +191,7 @@ h2 {
     font-family: 'Inter', sans-serif;
 }
 
+/* forgot password */
 .forgot {
     color: var(--white-color);
     margin-bottom: -20px;
@@ -194,6 +200,7 @@ h2 {
     font-family: 'Inter', sans-serif;
 }
 
+/* signin button */
 .submit {
   align-items: center;
   justify-content: center;
@@ -232,6 +239,7 @@ button:hover {
     color: whitesmoke
 }
 
+/* or signin using */
 .heading {
     margin-top: -10px;
     display: flex;
@@ -241,6 +249,7 @@ button:hover {
     color: #222;
 }
 
+/* icons */
 .icons {
     margin-top: -10px;
     margin-bottom: -2px;
@@ -262,6 +271,7 @@ button:hover {
     color: #222;
 }
 
+/* signup link */
 .create {
     margin-top: -21px;
     display: flex;
