@@ -10,7 +10,33 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* General Styles */
+      
+        header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: aliceblue;
+  }
+  .dark-mode {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode header,
+.dark-mode footer {
+    background: #333;
+    color: white;
+}
+
+/* Dark Mode for Links */
+.dark-mode a {
+    color: white !important;
+}
+
+.dark-mode a:hover {
+    color: #e67e22 !important;
+}
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -124,7 +150,7 @@
     </style>
 </head>
 <body>
-   <header class="header" style="background: rgba(255, 255, 255, 0.5);">
+   <header class="header">
         <div class="logo-section">
             <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
             <h1 class="brand-title">Fusion Vision</h1>
@@ -137,11 +163,13 @@
 <a href="contact.html" class="nav-link">Contact</a>
             
             <a href="reviews.html" class="nav-link active">Reviews</a>
+
         </nav>
         <div class="auth-buttons">
             <button class="btn-secondary" id="loginButton" fdprocessedid="p7lv7" onclick="window.location.href='signIn.html'">Sign In</button>
             <button class="btn-primary" id="registerButton" fdprocessedid="mplky8">Get Started</button>
         </div>
+        <button id="darkModeToggle">🌙Dark theme</button>
     </header>
     <br>
     <br>
@@ -233,4 +261,33 @@
       </footer>
 
 
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
+<script>
+      const toggleButton = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Apply dark mode if saved in localStorage
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    if (toggleButton) {
+        toggleButton.textContent = "☀️ Light Mode";
+    }
+}
+
+// Toggle Dark Mode
+if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            toggleButton.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            toggleButton.textContent = "🌙 Dark Mode";
+        }
+    });
+}
+</script>
+</body>
+</html>
