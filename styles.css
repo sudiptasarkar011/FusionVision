@@ -766,7 +766,7 @@ footer {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: var(--background-color) url('FusionVision_BG_blurred.jpg') no-repeat center center fixed;
+    background: var(--background-color) url('https://ryansechrest.com/content/images/2022/08/nodes.gif') no-repeat center center fixed;
     background-size: cover;
 }
 
