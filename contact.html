@@ -11,6 +11,34 @@
 
 </head>
 <style>
+   header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: aliceblue;
+  }
+  .dark-mode {
+    background-color: #1e1e1e;
+    color: white;
+}
+#darkModeToggle {
+padding-left:0rem;
+}
+
+.dark-mode header,
+.dark-mode footer {
+    background: #333;
+    color: white;
+}
+
+/* Dark Mode for Links */
+.dark-mode a {
+    color: white !important;
+}
+
+.dark-mode a:hover {
+    color: #e67e22 !important;
+}
  
 
   .contact-form-container {
@@ -69,7 +97,7 @@ input, textarea {
 }
 
 button {
-  width: 100%;
+  
   padding: 10px;
   background-color: #007bff;
   color: white;
@@ -122,7 +150,7 @@ button:hover {
 
 </style>
 <body>
-    <header class="header" style="background: rgba(168, 173, 200, 0.9);">
+    <header class="header">
         <div class="logo-section">
             <img src="Logo.png" alt="Fusion Vision Logo" class="logo zoomable">
             <h1 class="brand-title">Fusion Vision</h1>
@@ -138,6 +166,7 @@ button:hover {
             <button class="btn-secondary" id="loginButton" onclick="window.location.href='signIn.html'">Sign In</button>
             <button class="btn-primary" id="registerButton" onclick="window.location.href='signUp.html'">Get Started</button>
         </div>
+        <button id="darkModeToggle">🌙Dark theme</button>
     </header>
 
     <main class="main-content" >
@@ -233,6 +262,32 @@ button:hover {
           <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Fusion Vision. All rights reserved.</p>
         </div>
       </footer>
-      
+      <script>
+         const toggleButton = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Apply dark mode if saved in localStorage
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    if (toggleButton) {
+        toggleButton.textContent = "☀️ Light Mode";
+    }
+}
+
+// Toggle Dark Mode
+if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            toggleButton.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            toggleButton.textContent = "🌙 Dark Mode";
+        }
+    });
+}
+      </script>
 </body>
 </html> 
