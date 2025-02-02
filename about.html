@@ -36,6 +36,66 @@
 .dark-mode a:hover {
     color: #e67e22 !important;
 }
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .container {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        .card p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .main-content{
+          padding: 3rem;
+        }
+        .section-title{
+          text-align: center;
+        }
 </style>
 <body>
     <header id="header">
@@ -61,10 +121,37 @@
         <section class="about-section" style="background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 10px;">
             <h2 class="section-title">About Fusion Vision</h2>
             <p class="section-text">
-                Fusion Vision is an advanced object detection platform that leverages 
+              😎Fusion Vision is an advanced object detection platform that leverages 
                 cutting-edge AI technology to provide real-time object recognition and analysis.
             </p>
+            <p class="section-text">
+            👌The platform offers features such as real-time scanning and user authentication, allowing users to sign in or create accounts to access its services.
+            </p>
+            <p class="section-text">
+            😊In the field of object detection, sensor fusion techniques are commonly employed to enhance accuracy and reliability. For instance, combining data from LiDAR and cameras has been shown to improve 3D object detection by leveraging the strengths of both sensor types. 
+             </p>
             <!-- Add more content as needed -->
+             <h1 class="section-title">Blog section</h1>
+            <div class="container">
+              <div class="card">
+                  <img src="https://img.freepik.com/free-vector/diverse-teenage-group-hanging-out_1308-133206.jpg?ga=GA1.1.399736700.1737889429&semt=ais_hybrid" alt="Blog Image">
+                  <h3>The Big Brand Theory | Freshness...</h3>
+                  <p>Read more about the story of three engineering students who baked their way into the hearts of millions of Indians.</p>
+                  <a href="#" class="btn">See our blog</a>
+              </div>
+              <div class="card">
+                  <img src="https://img.freepik.com/premium-photo/interior-restaurant_961307-26292.jpg?ga=GA1.1.399736700.1737889429&semt=ais_hybrid_sidr" alt="Blog Image">
+                  <h3>Setting Up New Restaurants on...</h3>
+                  <p>Learn more about how we are ensuring success for new restaurant partners by providing a growth playbook.</p>
+                  <a href="#" class="btn">See our blog</a>
+              </div>
+              <div class="card">
+                  <img src="https://as1.ftcdn.net/v2/jpg/07/59/72/20/1000_F_759722029_sKq0wE9SBzGZPAmi38ioxJ8vGHD3aBLk.jpg" alt="Blog Image">
+                  <h3>Farewell Akriti | Freshness...</h3>
+                  <p>Read more about the story of three engineering students who baked their way into the hearts of millions of Indians.</p>
+                  <a href="#" class="btn">See our blog</a>
+              </div>
+          </div>
         </section>
     </main>
 
