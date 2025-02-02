@@ -58,6 +58,31 @@
                 align-items: center;
             }
         }
+        header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: aliceblue;
+  }
+  .dark-mode {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode header,
+.dark-mode footer {
+    background: #333;
+    color: white;
+}
+
+/* Dark Mode for Links */
+.dark-mode a {
+    color: white !important;
+}
+
+.dark-mode a:hover {
+    color: #e67e22 !important;
+}
     </style>
 </head>
 <body>
@@ -77,6 +102,7 @@
             <button class="btn-secondary" id="loginButton">Sign In</button>
             <button class="btn-primary" id="registerButton">Get Started</button>
         </div>
+        <button id="darkModeToggle">🌙Dark theme</button>
     </header>
 
     <main class="main-content">
@@ -179,7 +205,31 @@
       </footer>
 
     <script>
-        // Optional: Additional JavaScript functionality for modals, interactions, etc.
+         const toggleButton = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Apply dark mode if saved in localStorage
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    if (toggleButton) {
+        toggleButton.textContent = "☀️ Light Mode";
+    }
+}
+
+// Toggle Dark Mode
+if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            toggleButton.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            toggleButton.textContent = "🌙 Dark Mode";
+        }
+    });
+}
     </script>
 </body>
 </html>

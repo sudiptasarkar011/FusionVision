@@ -22,3 +22,29 @@ scrollToTopBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
+const toggleButton = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Apply dark mode if saved in localStorage
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    if (toggleButton) {
+        toggleButton.textContent = "☀️ Light Mode";
+    }
+}
+
+// Toggle Dark Mode
+if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            toggleButton.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            toggleButton.textContent = "🌙 Dark Mode";
+        }
+    });
+}
