@@ -11,6 +11,51 @@
 
 </head>
 <style>
+  .section-title{
+    text-align: center;
+  }
+  .container {
+            background:transparent;
+            display: flex;
+            gap: 4rem;
+            width:100%;
+        }
+        .card {
+            background :white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            padding: 50px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        .card p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
   header{
     display: flex;
     justify-content: space-between;
@@ -64,7 +109,31 @@
                 Fusion Vision is an advanced object detection platform that leverages 
                 cutting-edge AI technology to provide real-time object recognition and analysis.
             </p>
+            <p class="section-text"> For instance, combining data from LiDAR and cameras has been shown to improve 3D object detection by leveraging the strengths of both sensor types. 
+            </p>
+            <p class="section-text">Similarly, the fusion of radar and camera data has been explored to improve object detection and tracking, providing robustness in various environmental conditions.</p>
             <!-- Add more content as needed -->
+          <h1 class="section-title">Blog Section</h1>
+          <div class="container">
+            <div class="card">
+                <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*VXZ8CamGG2Z0M0N4t0Fmng.jpeg" alt="Fusion Vision Blog Image">
+                <h3>Fusion Vision | Revolutionizing Object Detection</h3>
+                <p>Discover how Fusion Vision is transforming real-time object detection using AI and sensor fusion techniques.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+            <div class="card">
+                <img src="https://blog.roboflow.com/content/images/size/w1200/format/webp/2024/04/image-1056.webp" alt="Fusion Vision Blog Image">
+                <h3>Sensor Fusion in Object Detection</h3>
+                <p>rn how LiDAR, Radar, and CaLeamera fusion enhance the accuracy of object detection systems.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+            <div class="card">
+                <img src="https://blog.roboflow.com/content/images/size/w1000/2024/04/image-1075.webp" alt="Fusion Vision Blog Image">
+                <h3>Real-Time AI Vision Systems</h3>
+                <p>Explore the applications of AI-powered real-time vision systems in autonomous vehicles and security.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
         </section>
     </main>
 
