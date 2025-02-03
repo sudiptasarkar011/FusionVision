@@ -11,6 +11,57 @@
 
 </head>
 <style>
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+           
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        .card p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
   header{
     display: flex;
     justify-content: space-between;
@@ -35,6 +86,9 @@
 
 .dark-mode a:hover {
     color: #e67e22 !important;
+}
+.section-title{
+  text-align: center;
 }
 </style>
 <body>
@@ -64,7 +118,31 @@
                 Fusion Vision is an advanced object detection platform that leverages 
                 cutting-edge AI technology to provide real-time object recognition and analysis.
             </p>
+            <p class="section-text">
+              For instance, combining data from LiDAR and cameras has been shown to improve 3D object detection by leveraging the strengths of both sensor types.
+            </p>
             <!-- Add more content as needed -->
+             <h1 class="section-title">Blog section</h1>
+            <div class="container">
+              <div class="card">
+                  <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/22606/images/6ab500b-a52d-a85f-e56c-decbdeaa5b_Object-Detection.jpeg" alt="Fusion Vision Blog Image">
+                  <h3>Fusion Vision | Revolutionizing Object Detection</h3>
+                  <p>Discover how Fusion Vision is transforming real-time object detection using AI and sensor fusion techniques.</p>
+                  <a href="#" class="btn">Read More</a>
+              </div>
+              <div class="card">
+                  <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/22606/images/88ba633-6b82-e448-67ee-715e50245a5_yolo.jpeg" alt="Fusion Vision Blog Image">
+                  <h3>Sensor Fusion in Object Detection</h3>
+                  <p>Learn how LiDAR, Radar, and Camera fusion enhance the accuracy of object detection systems.</p>
+                  <a href="#" class="btn">Read More</a>
+              </div>
+              <div class="card">
+                  <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/22606/images/3dda6b4-14e2-45b2-33f1-8cfcdfb0860_object_detection_1.png" alt="Fusion Vision Blog Image">
+                  <h3>Real-Time AI Vision Systems</h3>
+                  <p>Explore the applications of AI-powered real-time vision systems in autonomous vehicles and security.</p>
+                  <a href="#" class="btn">Read More</a>
+              </div>
+          </div>
         </section>
     </main>
 
