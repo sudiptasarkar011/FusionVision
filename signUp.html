@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left fa-xl"></i>
+                </button>
+    </nav>
+
+
+    <!-- Signup Form Section -->
+    <div class="center-wrapper">
+        <div class="container">
+            <form class="signup-form" id="signup-form">
+                <h2>Sign Up</h2>
+
+                <div class="input-box">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter Your Name" required>
+                    <p class="error-message">Name is required</p>
+                </div>
+
+                <div class="input-box">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter Email" required>
+                    <p class="error-message">Invalid email</p>
+                </div>
+                
+                <div class="input-box">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                    <p class="error-message">Password must be at least 6 characters</p>
+                </div>
+
+                <div class="input-box">
+                    <label for="confirm-password">Confirm:</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                    <p class="error-message">Passwords do not match</p>
+                </div>
+
+                <button type="submit" class="btn">Sign Up</button>
+                <p class="signup-link">Already have an account? <a href="signIn.html">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
