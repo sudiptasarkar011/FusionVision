@@ -6,10 +6,11 @@ const multer = require("multer");
 const path = require("path");
 const { body, validationResult } = require("express-validator");
 const helmet = require("helmet");
+const cors = require("cors")
 require("dotenv").config();
 
 const app = express();
-
+app.use(cors())
 // Middleware
 app.use(express.json());
 app.use(express.static("uploads"));
