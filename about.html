@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <title>About - Fusion Vision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+
 
 </head>
 <style>
@@ -103,9 +105,10 @@
     </header>
 
     <main class="main-content">
+      <div class="hover-class" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
         <section class="about-section" style="background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 10px;">
-            <h2 class="section-title">About Fusion Vision</h2>
-            <p class="section-text">
+            <h2 class="section-title" style="transition: color 0.3s ease;" onmouseover="this.style.color='#0066b2'" onmouseout="this.style.color='black'">About Fusion Vision</h2>
+            <p class="section-text" style="transition: color 0.3s ease;" onmouseover="this.style.color='#0066b2'" onmouseout="this.style.color='black'">
                 Fusion Vision is an advanced object detection platform that leverages 
                 cutting-edge AI technology to provide real-time object recognition and analysis.
             </p>
@@ -135,6 +138,7 @@
             </div>
         </div>
         </section>
+      </div>
     </main>
 
     <footer id="footer" style="margin-bottom: 0rem; margin-left: 0rem; margin-right: 0rem; ">
@@ -145,39 +149,39 @@
           </div>
       
           <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
-            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Fusion Vision</h2>
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#0066b2'" onmouseout="this.style.color='black'">Fusion Vision</h2>
             <ul style="list-style: none; padding: 0;">
-              <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
-              <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
-              <li><a href="workwithus.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
-              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
-              <li><a href="contact.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+              <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+              <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+              <li><a href="workwithus.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+              <li><a href="contact.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
             </ul>
           </div>
       
           <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
-            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#0066b2'" onmouseout="this.style.color='black'">Learn More</h2>
             <ul style="list-style: none; padding: 0;">
-              <li><a href="privacyp.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
-              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
-              <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+              <li><a href="privacyp.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+              <li><a href="#" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+              <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#0066b2'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
             </ul>
           </div>                                                                                                                                                                                                                                                                 
       
           <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
-            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#0066b2'" onmouseout="this.style.color='black'">Follow Us</h2>
             <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
-              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#E4405F'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#1877F2'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#0077B5'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#000000'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fa-brands fa-x-twitter"></i></a></li>
+              <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#FF0000'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
             </ul>
           </div>
         </div>
       
         <div class="footer-bottom" style="padding: 10px; text-align: center; background-color: white;">
-          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Fusion Vision. All rights reserved.</p>
+          <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#0066b2'" onmouseout="this.style.color='black'">© 2025 Fusion Vision. All rights reserved.</p>
         </div>
       </footer>
       
