@@ -8,7 +8,7 @@ const { body, validationResult } = require("express-validator");
 const helmet = require("helmet");
 const cors = require("cors")
 require("dotenv").config();
-
+const  generateToken  = require("./utils")
 const app = express();
 app.use(cors())
 // Middleware
@@ -86,6 +86,7 @@ app.post(
 );
 
 // Login Route
+
 app.post(
   "/login",
   [
@@ -111,13 +112,16 @@ app.post(
         return res.status(401).json({ message: "Invalid credentials." });
       }
 
-      const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "1h" });
-      res.status(200).json({ message: "Login successful!", token });
+      // Generate token and set it in the cookie
+      generateToken(user._id, res);
+
+      res.status(200).json({ message: "Login successful!" });
     } catch (error) {
       res.status(500).json({ message: "Error logging in.", error: error.message });
     }
   }
 );
+
 
 // Upload Middleware with Validation
 const storage = multer.diskStorage({

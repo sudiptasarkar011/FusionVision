@@ -3,6 +3,7 @@
     "init-db": "mysql -u root -p < data.sql",
     "start": "node server.js"
   },
+  "type": "commonjs",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
