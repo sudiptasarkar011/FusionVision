@@ -113,6 +113,7 @@ body {
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, #000428, #004e92);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -911,6 +912,7 @@ h2 {
 
 .back-btn i {
     margin-right: 8px; /* Space between icon and text */
+}
 
   
   .dark-mode .header,
