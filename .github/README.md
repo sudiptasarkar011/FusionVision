@@ -104,15 +104,15 @@ Here are some screenshots of the application:
 
 - **Contact Page**
   
-  ![Contact Page](contact.jpg)
+  ![Contact Page](/images/contact.jpg)
 
 - **Homepage**
 
-  ![Homepage](homepage.jpg)
+  ![Homepage](/images/homepage.jpg)
 
 - **Permission Request**
 
-  ![Permission Request](permission.jpg)
+  ![Permission Request](/images/permission.jpg)
 
 
 
@@ -120,11 +120,11 @@ Here are some screenshots of the application:
 
 - **Social Winter Of Code 2025**
 
-  ![SWOC](swoc.png)
+  ![SWOC](/images/swoc.png)
 
 - **InnoGeeks Winter of Code**
 
-  ![IWOC](iwoc.png)
+  ![IWOC](/images/iwoc.png)
 
 ## Contributing
 
