@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const connectDB = require('./db'); // Import your DB connection
+const connectDB = require('../db'); // Import your DB connection
 
 require('dotenv').config();
 const jwtSecret = process.env.JWT_SECRET;
