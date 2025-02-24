@@ -11,6 +11,131 @@
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+      *{
+  margin: 0;
+  padding: 0;
+  font-family: 'poppins',sans-serif;
+}
+section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  
+  
+  background-position: center;
+  background-size: cover;
+}
+.form-box{
+  position: relative;
+  width: 450px;
+  height: 540px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+h2{
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+}
+.inputbox{
+  position: relative;
+  margin: 30px 0;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+.inputbox label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1em;
+  pointer-events: none;
+  transition: .5s;
+}
+input:focus ~ label,
+input:valid ~ label{
+top: -5px;
+}
+.inputbox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding:0 35px 0 5px;
+  color: #fff;
+}
+.inputbox ion-icon{
+  position: absolute;
+  right: 8px;
+  color: #fff;
+  font-size: 1.2em;
+  top: 20px;
+}
+.forget{
+  margin: -15px 0 15px ;
+  font-size: .9em;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;  
+}
+
+.forget label input{
+  margin-right: 3px;
+  
+}
+.forget label a{
+  color: #fff;
+  text-decoration: none;
+}
+.forget label a:hover{
+  text-decoration: underline;
+}
+#button_login{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+#button_login:hover{
+    transform: scale(1.05);
+    background-color: #f0f0f0;  
+}
+.register{
+  font-size: .9em;
+  color: #fff;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+.register p a{
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+.register p a:hover{
+  text-decoration: underline;
+}
+  </style>
+
     <!-- Navbar Section -->
     <nav class="navbar">
       <button class="back-btn" onclick="window.location.href='../index.html'">
@@ -18,59 +143,61 @@
       </button>
     </nav>
 
-    <!-- Signup Form Section -->
-    <div class="center-wrapper">
-      <div class="container">
-        <form class="signup-form" id="signup-form">
+    <!-- Signup Form Section --><section>
+    <div class="form-box">
+      <div class="form-value">
+        <form action="">
           <h2>Sign Up</h2>
 
-          <div class="input-box">
+          <div class="inputbox">
+            
+            <input type="text" required>
             <label for="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              placeholder="Enter Your Name"
-              required
-            />
             <p class="error-message">Name is required</p>
           </div>
 
-          <div class="input-box">
+          <div class="inputbox">
+            <input type="email" id="email"required />
             <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter Email" required />
+            
             <p class="error-message">Invalid email</p>
           </div>
 
-          <div class="input-box">
-            <label for="password">Password:</label>
+          <div class="inputbox">
             <input
               type="password"
               id="password"
-              placeholder="Enter Password"
+              
               required
             />
+            <label for="password">Password:</label>
+            
             <p class="error-message">Password must be at least 6 characters</p>
           </div>
 
-          <div class="input-box">
-            <label for="confirm-password">Confirm:</label>
+          <div class="inputbox">
+            
             <input
               type="password"
               id="confirm-password"
-              placeholder="Confirm Password"
+            
               required
             />
+            <label for="confirm-password">Confirm:</label>
             <p class="error-message">Passwords do not match</p>
           </div>
 
-          <button type="submit" class="btn">Sign Up</button>
-          <p class="signup-link">
-            Already have an account? <a href="signIn.html">Sign In</a>
-          </p>
+          <button type="submit" id ="button_login" >Sign Up</button>
+          <div class="register">
+            <p>Already have an account? <a href="signIn.html">Sign In</a></p>
+          </div>
         </form>
       </div>
     </div>
+  </section>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="signup.js"></script>
   </body>
 </html>
