@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 | Fusion Vision</title>
 
-    <!-- Google Font -->
+    <!-- Google Font (Poppins) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* Reset default margin, padding, and set box-sizing */
         * {
             margin: 0;
             padding: 0;
@@ -16,29 +17,30 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* Body styling */
         body {
-            background-color: #0f172a;
+            background-color: #0f172a; /* Dark blue background */
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             padding: 20px;
             position: relative;
         }
 
-       
-
+        /* 404 Error Page Container */
         .error-page {
             display: flex;
             align-items: center;
             justify-content: space-between;
             max-width: 900px;
             width: 100%;
-            animation: fadeIn 1.2s ease-in-out;
+            animation: fadeIn 1.2s ease-in-out; /* Fade-in animation */
         }
 
+        /* Image container for error illustration */
         .error-img {
             width: 50%;
             display: flex;
@@ -46,19 +48,22 @@
             align-items: center;
         }
 
+        /* Styling for the error image */
         .error-img img {
             width: 80%;
             max-width: 400px;
-            filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2));
-            animation: glow 2s infinite alternate;
+            filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2)); /* Soft glow effect */
+            animation: glow 2s infinite alternate; /* Glowing animation */
         }
 
+        /* Content section (text and button) */
         .content {
             width: 50%;
             text-align: left;
             padding: 20px;
         }
 
+        /* Heading styles */
         h2 {
             font-size: 3rem;
             font-weight: 700;
@@ -66,19 +71,22 @@
             margin: 20px 0;
         }
 
+        /* Styling for the highlighted text inside h2 */
         h2 span {
             color: #4d69e2;
             text-shadow: 0px 0px 10px rgba(77, 105, 226, 0.8);
         }
 
+        /* Paragraph styles */
         p {
             color: #aaaaac;
             margin: 15px 0;
             font-size: 1.1rem;
         }
 
+        /* Button styling */
         .btn {
-            background: linear-gradient(45deg, #4d69e2, #7a54e2);
+            background: linear-gradient(45deg, #4d69e2, #7a54e2); /* Gradient background */
             border: none;
             border-radius: 50px;
             padding: 12px 25px;
@@ -89,11 +97,13 @@
             box-shadow: 0px 0px 10px rgba(77, 105, 226, 0.5);
         }
 
+        /* Button hover effect */
         .btn:hover {
             transform: scale(1.1);
             box-shadow: 0px 0px 20px rgba(77, 105, 226, 0.8);
         }
 
+        /* Fade-in animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -105,6 +115,7 @@
             }
         }
 
+        /* Glow animation for the error image */
         @keyframes glow {
             from {
                 filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.3));
@@ -114,7 +125,7 @@
             }
         }
 
-        /* Responsive Design */
+        /* Responsive Design for smaller screens */
         @media (max-width: 768px) {
             .error-page {
                 flex-direction: column;
@@ -148,6 +159,7 @@
             }
         }
 
+        /* Further adjustments for very small screens */
         @media (max-width: 480px) {
             h2 {
                 font-size: 2rem;
@@ -169,18 +181,20 @@
 </head>
 <body>
 
-    
-
+    <!-- Main 404 Error Page Container -->
     <div class="error-page">
+        <!-- Image Section -->
         <div class="error-img">
             <img src="images/404-image.jpg" alt="404 Error">
         </div>
+        
+        <!-- Text Content Section -->
         <div class="content">
             <h2>Error 404! <br><span>Page Not Found</span></h2>
             <p>Looks like this page has vanished into the digital void. Let’s get you back where you belong.</p>
             
+            <!-- Redirect Button to Homepage -->
             <button class="btn" onclick="window.location.href='index.html'">Go Back</button>
-
         </div>
     </div>
 
