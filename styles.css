@@ -8,6 +8,50 @@
     --radius: 8px;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+/* Default text color (Light mode) */
+body {
+    color: #000; /* Default text color for light mode */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    color: #fff; /* Text color changes to white in dark mode */
+    background-color: #111; /* Optional: change background to dark color */
+}
+
+/* Additional dark mode styles for specific elements */
+body.dark-mode .header {
+    background: rgba(31, 31, 31, 0.9); /* Optional: Dark header background */
+}
+
+body.dark-mode .auth-buttons .btn-primary,
+body.dark-mode .auth-buttons .btn-secondary {
+    color: white; /* Ensure button text is white in dark mode */
+    border-color: #555;  /* Lighter border for dark mode */
+}
+
+body.dark-mode .auth-buttons .btn-primary {
+    background-color: #0070f3; /* Adjust primary button color */
+}
+
+body.dark-mode .auth-buttons .btn-secondary {
+    background-color: transparent;
+}
+/* Dark Mode for Title */
+.dark-mode .brand-title {
+    color: white;
+}
+/* Dark Mode for Footer Text */
+/* Dark Mode for Footer Content Text */
+.dark-mode #footer .footer-content .footer-section.about p {
+    color: white !important;
+}
+
+/* Ensure other footer elements also adjust to dark mode */
+.dark-mode #footer .footer-content {
+    color: white !important;
+}
+
 
  *{
     margin: 0;
