@@ -59,7 +59,37 @@ body.dark-mode .auth-buttons .btn-secondary {
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 15px; /* Width of the scrollbar */
+    height: 10px; /* Height of the scrollbar if horizontal */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light background color for the track */
+    border-radius: 19px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Darker color for the thumb */
+    border-radius: 19px;
+    /* min-height: 10px;  */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker on hover */
+  }
+  
+  /* For the horizontal scrollbar */
+  ::-webkit-scrollbar-horizontal {
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track-piece {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
 body {
     background: var(--background-color) url('https://ryansechrest.com/content/images/2022/08/nodes.gif') no-repeat center center fixed;
     background-size: cover;
